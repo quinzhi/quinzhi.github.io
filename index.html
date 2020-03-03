@@ -64,6 +64,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-test111" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/04/test111/" class="article-date">
+  <time datetime="2020-03-03T16:26:58.000Z" itemprop="datePublished">2020-03-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/04/test111/">test111</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/04/test111/" data-id="ck7c3ute80000zow09fre7dvu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/04/test/" class="article-date">
@@ -574,69 +610,6 @@
 
 
   
-    <article id="post-记一次服务器ssh登陆修复" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/" class="article-date">
-  <time datetime="2018-12-03T12:02:50.000Z" itemprop="datePublished">2018-12-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/">记一次服务器ssh登陆修复</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>1.服务器远程登陆报错: connection refused</p>
-<h1 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h1><p>1.首先考虑网络问题，发现可以ping通,排除网络问题<br>2.因为有人在无法登陆之前已经登陆了，尝试重启服务器,重启之后问题还在。<br>3.重启无效又没法登陆，只能跑去机房上屏幕调试了。</p>
-<p>生平第一次进机房处理毛病，插上就是图形登陆界面，输入密码发现登陆之后会黑屏，然后回到登陆界面。<br>我日，难道是系统炸了。既然图形界面上不了，那就上终端。<code>ctrl alt f1</code> 进tty。<br>tty能进，那就简单了，尝试检查一下ssh服务是不是开着：</p>
-<p><code>netstat -l | grep ssh</code></p>
-<p>发现没有ssh服务，那就重启服务：</p>
-<p><code>sudo sevice sshd restart</code></p>
-<p>报错：<code>Job for ssh.service failed because the control process exited with error code</code><br>从这个报错来看ssh的进程应该还在才对，但是top和端口都找不到相关服务。没辙了，直接百度这个错误吧。</p>
-<p>然后找到了这个老哥的blog：</p>
-<p><a href="https://blog.csdn.net/woailyoo0000/article/details/79782986" target="_blank" rel="noopener">csdn</a></p>
-<p>发现一条命令：</p>
-<p><code>/usr/sbin/sshd -T</code></p>
-<p>没查过这个命令，但是估计-T应该是test吧。测试配置文件<br>运行一下，报错了，配置文件错误，问题找到了，和上面这个老哥一样</p>
-<p>但是我不懂ssh的配置语法，该怎么改呢<br>再次百度这个错误</p>
-<p><a href="http://www.cnblogs.com/miaodi/p/6718950.html" target="_blank" rel="noopener">cnblog</a></p>
-<p>估计是ssh更新或者某个人把配置文件给改错了，</p>
-<p>错误配置：<br><code>PermitRootLogin prohibit-password yes</code></p>
-<p>正确配置：<br><code>PermitRootLogin yes</code></p>
-<p>然后重启ssh服务</p>
-<p><code>sudo service ssh restart</code></p>
-<p>大功告成，可以登陆了。</p>
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>1.善用搜索引擎，直接搜索<strong>错误信息</strong><br>2.这之后发现在图形界面仍然无法登陆，估计是根本没有安装图形桌面（但登陆界面是图形化的）<br>或者管理员做了某些限制吧，这个奇怪的现象把我解决问题的想法打乱了一点，因为ssh无法登陆<br>应该不会影响直接登陆才对。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/" data-id="ck7c3lk3o001j68w010u6fupn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -694,6 +667,10 @@
       <ul>
         
           <li>
+            <a href="/2020/03/04/test111/">test111</a>
+          </li>
+        
+          <li>
             <a href="/2020/03/04/test/">test</a>
           </li>
         
@@ -707,10 +684,6 @@
         
           <li>
             <a href="/2019/12/19/%E7%8F%8D%E7%88%B1%E7%BD%91-spider/">珍爱网图片爬虫</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/18/basic%20c++/">C++基础</a>
           </li>
         
       </ul>

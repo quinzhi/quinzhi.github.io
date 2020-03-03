@@ -64,6 +64,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python数据结构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/09/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2018-10-09T06:06:52.000Z" itemprop="datePublished">2018-10-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python-basic/">Python basic</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/09/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Python内建数据结构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="元组-tuple"><a href="#元组-tuple" class="headerlink" title="元组(tuple)"></a>元组(tuple)</h1><p>元组与列表类似，但元组的元素不可修改,元素可重复</p>
+<h2 id="元组创建"><a href="#元组创建" class="headerlink" title="元组创建"></a>元组创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tuple1 = ()  <span class="comment"># 空元组</span></span><br><span class="line">tuple2 = (<span class="number">1</span>,)  <span class="comment"># 只有一个元素时要加上都逗号,否则会被认为是后面的值的类型</span></span><br><span class="line">tuple3 = (<span class="number">1</span>, <span class="string">'2'</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="访问元组元素"><a href="#访问元组元素" class="headerlink" title="访问元组元素"></a>访问元组元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tuple3[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">tuple3[<span class="number">0</span>:<span class="number">-1</span>] = <span class="number">1</span>, <span class="string">'2'</span>, <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="列表-list"><a href="#列表-list" class="headerlink" title="列表(list)"></a>列表(list)</h1><p>可修改元素值，元素可重复</p>
+<h2 id="列表创建"><a href="#列表创建" class="headerlink" title="列表创建"></a>列表创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list1 = []  <span class="comment"># 空列表</span></span><br><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="访问列表元素"><a href="#访问列表元素" class="headerlink" title="访问列表元素"></a>访问列表元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list1[<span class="number">0</span>]</span><br><span class="line">list[<span class="number">0</span>:<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="更新列表"><a href="#更新列表" class="headerlink" title="更新列表"></a>更新列表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">0</span>]</span><br><span class="line">list.append(<span class="number">1</span>)  <span class="comment"># 将元素1添加到列表后</span></span><br><span class="line"><span class="keyword">print</span> list</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除列表元素"><a href="#删除列表元素" class="headerlink" title="删除列表元素"></a>删除列表元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">del</span> list[<span class="number">0</span>]  <span class="comment"># 删除索引为0的元素</span></span><br><span class="line"><span class="keyword">print</span> list</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用的列表操作"><a href="#常用的列表操作" class="headerlink" title="常用的列表操作"></a>常用的列表操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">len([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])   <span class="comment"># 长度</span></span><br><span class="line">len(list1)</span><br><span class="line">list1+list2    <span class="comment"># 组合</span></span><br><span class="line">[<span class="number">1</span>]*<span class="number">3</span>          <span class="comment"># 重复</span></span><br><span class="line"><span class="number">3</span> <span class="keyword">in</span> list1     <span class="comment"># 判断是否存在</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list1:   <span class="comment"># 迭代</span></span><br><span class="line">    xxxx</span><br><span class="line">cmp(list1, list2)  <span class="comment"># 比较</span></span><br><span class="line">max(list1)          <span class="comment"># 返回最大值</span></span><br><span class="line">min(list1)</span><br><span class="line">list(tuple1)        <span class="comment"># 将元组转换为列表</span></span><br><span class="line">list1.count(<span class="string">'1'</span>)     <span class="comment"># 统计元素出现次数</span></span><br><span class="line">list1.insert(index, obj)  <span class="comment"># 在某个位置插入元素</span></span><br><span class="line">list1.index(obj)         <span class="comment"># 得到某元素第一次出现的索引</span></span><br><span class="line">list1.pop                <span class="comment"># 移除最后一个元素，并返回该值</span></span><br><span class="line">list1.pop(index=<span class="number">1</span>)       <span class="comment"># 按索引移除某个元素</span></span><br><span class="line">list1.remove(obj)         <span class="comment"># 移除某个元素的第一隔匹配项</span></span><br></pre></td></tr></table></figure>
+<h1 id="字典-dictionary"><a href="#字典-dictionary" class="headerlink" title="字典(dictionary)"></a>字典(dictionary)</h1><p>字典即键值对的集合,其中键(key)在同一字典内是唯一的，key可以是数字、字符、元组，但不能用列表</p>
+<h2 id="字典创建"><a href="#字典创建" class="headerlink" title="字典创建"></a>字典创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;&#125;</span><br><span class="line">dic = &#123;<span class="number">1</span>:<span class="string">'a'</span>, <span class="number">2</span>:<span class="string">'b'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="访问字典值"><a href="#访问字典值" class="headerlink" title="访问字典值"></a>访问字典值</h2><p>通过key访问</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dic[<span class="number">1</span>]</span><br><span class="line">dic[<span class="string">'a'</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="删除字典元素"><a href="#删除字典元素" class="headerlink" title="删除字典元素"></a>删除字典元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> dict[<span class="string">'name'</span>]  <span class="comment"># 删除一个元素</span></span><br><span class="line">dict.clear()      <span class="comment"># 清空字典元素</span></span><br></pre></td></tr></table></figure>
+<h2 id="操作字典"><a href="#操作字典" class="headerlink" title="操作字典"></a>操作字典</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cmp(dic1, dic2)</span><br><span class="line">len(dic)</span><br><span class="line">str(dict)</span><br><span class="line">dict.has_key(key)   <span class="comment"># key在字典内则返回True，否则返回false(python2.x)</span></span><br><span class="line">dict.__contains__(key)    <span class="comment"># key在字典内则返回True，否则返回false(python3.x)</span></span><br><span class="line">dict.items()        <span class="comment"># 返回键值对</span></span><br><span class="line">dict.keys()         <span class="comment"># 返回含有所有key的list</span></span><br><span class="line">dict.values()       <span class="comment"># 返回含有所有values的list</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h1><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="论迭代过程中删除元素的正确方式"><a href="#论迭代过程中删除元素的正确方式" class="headerlink" title="论迭代过程中删除元素的正确方式"></a>论迭代过程中删除元素的正确方式</h3><p>错误示范：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        a.remove(i)</span><br><span class="line"><span class="keyword">print</span> a</span><br></pre></td></tr></table></figure>
+<p>本意是想将列表中的偶数删除，正确结果应该是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<p>但上述代码的运行结果是:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<p>因为在删除元素<code>2</code>之后，列表重新进行了排序，此时元素<code>4</code>变成了索引为1的元素,<br>而列表只根据索引进行迭代，索引为1的元素已经被处理过了，因此下一个迭代到的元素为索引为2的元素<code>4</code>(第二个4)，即第一个被’顶上去’的元素<code>4</code>被跳过了。</p>
+<h3 id="正确示范"><a href="#正确示范" class="headerlink" title="正确示范"></a>正确示范</h3><p>普通人：可以用另一个列表把奇数拿出来，避免删除操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line">b = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">        b.append(i)</span><br></pre></td></tr></table></figure>
+<p>大佬：也可以使用过滤器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># filter(function, iterable)</span></span><br><span class="line"><span class="comment"># 过滤掉不符合条件的值，即过滤掉使得function返回False或者None的值（留下返回值为True的值）</span></span><br><span class="line"><span class="comment"># return list in python2.7, return iterable in python3.0+, can use list(iterable) to turn it into list</span></span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line">a = filter(<span class="keyword">lambda</span> i: i%<span class="number">2</span>!=<span class="number">0</span>, a)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(i)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line">a = filter(test, a)</span><br></pre></td></tr></table></figure>
+<p>大仙：倒序处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(a) - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):  <span class="comment"># range(start, end, step) 注意区间是前闭后开的，因此end应取0的前一个数-1</span></span><br><span class="line">    <span class="keyword">if</span> a[i]%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        a.remove(a[i])</span><br></pre></td></tr></table></figure>
+
+<pre><code>### 总结
+for进行遍历时，遍历的长度从一开始就已经确定了，并且其遍历的索引不会根据列表变化而改变，因此可能会导致漏掉一些元素或者遍历的索引越界</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/09/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" data-id="ck7c3lk33000668w07n621yfv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-processmonitor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/08/processmonitor/" class="article-date">
@@ -433,6 +513,10 @@
       <ul>
         
           <li>
+            <a href="/2020/03/04/test111/">test111</a>
+          </li>
+        
+          <li>
             <a href="/2020/03/04/test/">test</a>
           </li>
         
@@ -446,10 +530,6 @@
         
           <li>
             <a href="/2019/12/19/%E7%8F%8D%E7%88%B1%E7%BD%91-spider/">珍爱网图片爬虫</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/18/basic%20c++/">C++基础</a>
           </li>
         
       </ul>
