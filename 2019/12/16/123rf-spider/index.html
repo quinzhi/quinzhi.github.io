@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>图片素材网站123rf.com爬虫 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景从百度谷歌必应爬来的图片已经不能满足需求了，所以被迫找专门的图片素材网站来获取需要的图片数据。国内的图片站并不多，国外的倒是百花齐放，大多数估计是设计师上传原图收费用的，果然国外版权意识就是强 方案话不多说直接F12搜索抓包，可以看到接口: 1https:&#x2F;&#x2F;www.123rf.com&#x2F;stock-photo&#x2F;gun.html?oriSearch&#x3D;gun&amp;start&#x3D;100&amp;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片素材网站123rf.com爬虫">
+<meta property="og:url" content="http://yoursite.com/2019/12/16/123rf-spider/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="背景从百度谷歌必应爬来的图片已经不能满足需求了，所以被迫找专门的图片素材网站来获取需要的图片数据。国内的图片站并不多，国外的倒是百花齐放，大多数估计是设计师上传原图收费用的，果然国外版权意识就是强 方案话不多说直接F12搜索抓包，可以看到接口: 1https:&#x2F;&#x2F;www.123rf.com&#x2F;stock-photo&#x2F;gun.html?oriSearch&#x3D;gun&amp;start&#x3D;100&amp;s">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-16T04:01:14.000Z">
+<meta property="article:modified_time" content="2019-12-18T08:01:28.287Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="123rf.com">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="spider">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-123rf-spider" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/16/123rf-spider/" class="article-date">
+  <time datetime="2019-12-16T04:01:14.000Z" itemprop="datePublished">2019-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/">图片爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      图片素材网站123rf.com爬虫
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>从百度谷歌必应爬来的图片已经不能满足需求了，所以被迫找专门的图片素材网站来获取需要的图片数据。<br>国内的图片站并不多，国外的倒是百花齐放，大多数估计是设计师上传原图收费用的，果然国外版权意识就是强</p>
+<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>话不多说直接F12搜索抓包，可以看到接口:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.123rf.com/stock-photo/gun.html?oriSearch=gun&amp;start=100&amp;sti=mo9zjoufp5w90e</span><br></pre></td></tr></table></figure>
+
+<p>参数有一个搜索关键词和起始位置，后面那个参数估计是时间？每次都在变，并且去掉也不会有影响，所以直接忽略。<br>通常这种图站图片url都是直接内嵌在html里，查看源页面在里面找图片url就好了。查找关键词无非是img jpg png之类的。<br>翻一下可以很快找到。请求头更简单，随便写个ua就过了，估计ua都不用。<br>所以思路就是请求接口，用正则匹配图片url。(就还蛮弱智的</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>一个页面还是挺大的，匹配的时候还是先找关键词缩小匹配范围，减少正则匹配时间。由于匹配关键词里有双引号，正则里<br>面要通过右斜杠\来转义双引号</p>
+<p>顺带复习一下正则：</p>
+<table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">匹配对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">字符关键词，匹配除\n外的任意字符一次</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">数量关键词，用于字符关键词之后，匹配前一个字符关键词0或无数次</td>
+</tr>
+<tr>
+<td align="center">()</td>
+<td align="center">逻辑关键词，分组，这里可以用来表示实际取出来的图片url, 通常配合findall使用，返回一个结果list</td>
+</tr>
+</tbody></table>
+<p>一个图片url部分形如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"https://us.123rf.com/450wm/moovstock/moovstock1706/moovstock170601226/80800333-waving-flag-with-starbucks-logo-against-sky-and-clouds-editorial-3d-rendering.jpg?ver=6"</span> <span class="attr">class</span>=<span class="string">"imgSrcClass"</span></span></span><br></pre></td></tr></table></figure>
+
+
+<p>很明显我们要构造的正则形如： xxxximg src=”图片url” class=xxxx</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line"></span><br><span class="line">urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  <span class="comment"># 老规矩关闭ssl报警</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">match = <span class="string">'img src="http'</span>                               <span class="comment"># 定位需要正则匹配的地方</span></span><br><span class="line">pattern = <span class="string">".*img src=\"(.*)\" class="</span>      </span><br><span class="line">pattern = re.compile(pattern)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r'.\\123rf_html.log'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> fp:       <span class="comment"># 保存网页到文件</span></span><br><span class="line">    fp.write(rep.content)</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r'.\\123rf_html.log'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> fp:      <span class="comment"># 读取时出现invalid start byte 可以先以二进制读出来，</span></span><br><span class="line">    line_lst = fp.readlines()                     <span class="comment"># 后面再跳过编码错误的行</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines_lst:</span><br><span class="line">    <span class="keyword">try</span>:                                          <span class="comment"># byte——&gt;str，跳过invalid start byte的行</span></span><br><span class="line">        line = str(line, <span class="string">'utf-8'</span>)       </span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">if</span> match <span class="keyword">in</span> line:</span><br><span class="line">        url_lst = pattern.findall(line)            </span><br><span class="line">        <span class="keyword">if</span> len(url_lst)==<span class="number">0</span>:                       <span class="comment"># 没匹配到跳过</span></span><br><span class="line">            contiue</span><br><span class="line">        pic_url = url_lst[<span class="number">0</span>]                      <span class="comment"># 这里每行只有一个匹配</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p>1.读取html文本可能出现invalid start byte,处理方式是通过二进制读出来，再转str，跳过编码错误的行，因为这里每一行内容少，编码错误行也不多，不影响结果，因此可以跳过<br>2.下载图片时不强制使用ssl                    pic = requests.get(url, verify=False, timeout=40)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/16/123rf-spider/" data-id="ck7c3lk2t000068w01zhz3kuv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/123rf-com/" rel="tag">123rf.com</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spider/" rel="tag">spider</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/16/gettyimages_spider/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          gettyimages图片爬虫
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/20/FileZilla%E7%9A%84%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">FileZilla的导出文件处理脚本</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-basic/">C++ basic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hello-World/">Hello World</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-basic/">Python basic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E8%AE%BE/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/">图片爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/123rf-com/" rel="tag">123rf.com</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Filezilla/" rel="tag">Filezilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="tag">Linux文件系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim%E4%B9%B1%E7%A0%81/" rel="tag">Vim乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim%E9%85%8D%E7%BD%AE/" rel="tag">Vim配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/baihe/" rel="tag">baihe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gettyimages/" rel="tag">gettyimages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/" rel="tag">spider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%90%88%E7%BD%91/" rel="tag">百合网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" rel="tag">读取文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8WAN-LAN/" rel="tag">路由器WAN,LAN</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/123rf-com/" style="font-size: 10px;">123rf.com</a> <a href="/tags/Filezilla/" style="font-size: 10px;">Filezilla</a> <a href="/tags/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">Linux文件系统</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Vim%E4%B9%B1%E7%A0%81/" style="font-size: 10px;">Vim乱码</a> <a href="/tags/Vim%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">Vim配置</a> <a href="/tags/baihe/" style="font-size: 10px;">baihe</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/gettyimages/" style="font-size: 10px;">gettyimages</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spider/" style="font-size: 15px;">spider</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 20px;">爬虫</a> <a href="/tags/%E7%99%BE%E5%90%88%E7%BD%91/" style="font-size: 10px;">百合网</a> <a href="/tags/%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" style="font-size: 10px;">读取文件</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8WAN-LAN/" style="font-size: 10px;">路由器WAN,LAN</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/04/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/03/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/">百合网图片爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/%E7%8F%8D%E7%88%B1%E7%BD%91-spider/">珍爱网图片爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/basic%20c++/">C++基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

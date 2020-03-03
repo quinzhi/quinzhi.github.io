@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>python文本读写及初步处理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="打开文本pyhon打开文本主要有两种方式，即open和with open 123fp&#x3D;open(path, &#39;r&#39;)...fp.close()               #记得关闭句柄 文件使用后必须关闭，因为文件对象会占用系统资源，并且系统同一时间能打开的文件是有限的由于，文件读写时可能产生IOError，一旦出错，fp.close()将不会被调用，系统资源无法被释放，因此我们应使用try f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python文本读写及初步处理">
+<meta property="og:url" content="http://yoursite.com/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="打开文本pyhon打开文本主要有两种方式，即open和with open 123fp&#x3D;open(path, &#39;r&#39;)...fp.close()               #记得关闭句柄 文件使用后必须关闭，因为文件对象会占用系统资源，并且系统同一时间能打开的文件是有限的由于，文件读写时可能产生IOError，一旦出错，fp.close()将不会被调用，系统资源无法被释放，因此我们应使用try f">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-11-15T09:40:21.000Z">
+<meta property="article:modified_time" content="2019-05-21T01:32:10.819Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="读取文件">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python文本处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/" class="article-date">
+  <time datetime="2018-11-15T09:40:21.000Z" itemprop="datePublished">2018-11-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python文本读写及初步处理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="打开文本"><a href="#打开文本" class="headerlink" title="打开文本"></a>打开文本</h1><p>pyhon打开文本主要有两种方式，即<code>open</code>和<code>with open</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp=open(path, <span class="string">'r'</span>)</span><br><span class="line">...</span><br><span class="line">fp.close()               <span class="comment">#记得关闭句柄</span></span><br></pre></td></tr></table></figure>
+<p>文件使用后必须关闭，因为文件对象会占用系统资源，并且系统同一时间能打开的文件是有限的<br>由于，文件读写时可能产生IOError，一旦出错，fp.close()将不会被调用，系统资源无法被释放<br>，因此我们应使用<code>try finally</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    fp = open(path, <span class="string">'r'</span>) </span><br><span class="line">    print(fp.read())</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="keyword">if</span> fp:</span><br><span class="line">        fp.close()</span><br></pre></td></tr></table></figure>
+<p>当然直接用<code>with open</code>是坠吼的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(path, <span class="string">'r'</span>) <span class="keyword">as</span> fp:   <span class="comment">#自动关闭句柄</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="打开模式"><a href="#打开模式" class="headerlink" title="打开模式"></a>打开模式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fp=open(path, <span class="string">'r'</span>)    <span class="comment">#只读</span></span><br><span class="line">fp=open(path, <span class="string">'w'</span>)    <span class="comment">#写(重写整个文件，若不存在则创建)</span></span><br><span class="line">fp=open(path, <span class="string">'a'</span>)    <span class="comment">#附加(在源文本基础上添加)</span></span><br><span class="line">fp=open(path, <span class="string">'b'</span>)    <span class="comment">#以二进制方式打开，通常可以解决一些编码问题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这些组合也可以叠加</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="读取文本"><a href="#读取文本" class="headerlink" title="读取文本"></a>读取文本</h1><p>python读取文本主要是三个方法<code>read()</code>,<code>readline()</code>, <code>readlines()</code></p>
+<p>read()方法将文本内容一次性全部读入字符串中，通常速度最快，但如果文本过大，<br>则会占用太多的内存。当然也可以通过限制读取字节数来限制读取量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.read()</span><br></pre></td></tr></table></figure>
+<p>readline()方法逐行读取文本，速度较慢</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    line = fp.readline()</span><br><span class="line">    <span class="keyword">while</span> line:</span><br><span class="line">        <span class="keyword">print</span> line</span><br><span class="line">        line = fp.readline()</span><br></pre></td></tr></table></figure>
+<p>readlines()方法会一次读取全部文本，并将结果放入list中,速度较快</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.readliens()</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，这三种方法实际上都将文本末尾的换行’\n’读取进来了，因此需要<br>去掉行尾的’\n’。</p>
+<h1 id="行处理"><a href="#行处理" class="headerlink" title="行处理"></a>行处理</h1><h2 id="去掉字符串前后的字符"><a href="#去掉字符串前后的字符" class="headerlink" title="去掉字符串前后的字符"></a>去掉字符串前后的字符</h2><p>去掉字符串前后的字符，可以通过<code>rstrip</code>,<code>strip</code>,<code>lstrip</code>来实现<br>rstrip()方法删除字符串末尾的指定字符，默认为空格，(rstrip中的r即右)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.rstrip()</span><br><span class="line">str.rstrip(<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
+<p>lstrip()方法删除字符串开头的指定字符(l即左边)</p>
+<p>strip()方法删除字符串首尾的指定字符</p>
+<h2 id="字符串分割"><a href="#字符串分割" class="headerlink" title="字符串分割"></a>字符串分割</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">os.path.split(str)    <span class="comment"># 分割文件名和路径名，结果为两个元素的list</span></span><br><span class="line">str.split(<span class="string">"\")        # 将str按照字符"</span>\<span class="string">"来分割，注意这是两个不同的方法</span></span><br></pre></td></tr></table></figure>
+<p>python中字符串本质其实是一个list,通过枚举的方法可以将字符串分成单个字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> str:</span><br><span class="line">    list.append(str)      <span class="comment"># 这样就将字符串str中的字符分别放入list中了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串分割为list后对list进行处理"><a href="#字符串分割为list后对list进行处理" class="headerlink" title="字符串分割为list后对list进行处理"></a>字符串分割为list后对list进行处理</h2><p>通常在操作目录或者别的字符串时需要去掉某些字符，通过分割字符串为列表之后，<br>可以直接通过list自带的分割来抛弃list中的某些部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list[<span class="number">1</span>:]     <span class="comment"># 注意区间是前闭后开的，取第二个元素到最后一个元素</span></span><br><span class="line">list[:<span class="number">-1</span>]    <span class="comment"># -1表示倒数第一个元素，但区间是前闭后开的，因而取第一个元素和倒数第二个元素</span></span><br></pre></td></tr></table></figure>
+<h2 id="list重新转化为字符串"><a href="#list重新转化为字符串" class="headerlink" title="list重新转化为字符串"></a>list重新转化为字符串</h2><p>处理完list之后，我们需要将list再次组合成字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_str = <span class="string">''</span>.join(lst)      <span class="comment"># 通过空字符串连接list元素，即直接拼接成新的字符串</span></span><br><span class="line">new_str = os.sep.join(lst)    <span class="comment"># 连接成目录</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="写入文本"><a href="#写入文本" class="headerlink" title="写入文本"></a>写入文本</h1><p>两种方式，一种即正常的write()方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(path, <span class="string">'w'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">'123'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>或者通过修改标准输出到文件来写入文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">origin = sys.stdout</span><br><span class="line">fp = open(path, <span class="string">'w'</span>)</span><br><span class="line">sys.stdout = fp</span><br><span class="line"></span><br><span class="line">sys.stdout = origin</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
+<p>明显第二种方式更加优雅，且可以很方便的从输出到屏幕到写入文件进行转换</p>
+<p>转载和引用：<br><a href="https://www.cnblogs.com/zywscq/p/5441145.html" target="_blank" rel="noopener">cnblog</a><br><a href="https://www.cnblogs.com/Yolandera/p/7257595.html" target="_blank" rel="noopener">cnblog</a></p>
+<h1 id="中文处理"><a href="#中文处理" class="headerlink" title="中文处理"></a>中文处理</h1><h2 id="ascii编码转换为utf-8"><a href="#ascii编码转换为utf-8" class="headerlink" title="ascii编码转换为utf-8"></a>ascii编码转换为utf-8</h2><p>python2.x中默认编码方式为ascii，若文本出现非ascii编码字符会报错,因而需要设置编码格式</p>
+<h3 id="python2-x"><a href="#python2-x" class="headerlink" title="python2.x"></a>python2.x</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#coding:utf-8                              # 代码编辑中可出现中文</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">reload(sys)                               </span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)           <span class="comment"># 编码转换</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="python3-x"><a href="#python3-x" class="headerlink" title="python3.x"></a>python3.x</h3><p>python3.x中不需要指定编码格式即可处理utf-8,但如果仍要转换格式，也可以</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#coding:utf-8                              # 代码编辑中可出现中文</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line"></span><br><span class="line">importlib.reload(sys)                      <span class="comment"># 编码转换</span></span><br></pre></td></tr></table></figure>
+<h2 id="中文路径及文件名"><a href="#中文路径及文件名" class="headerlink" title="中文路径及文件名"></a>中文路径及文件名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path = <span class="string">r'D:\测试路径\测试文件.txt'</span>           <span class="comment"># r''用于处理python中的转义符'\'，若不使用r''则需要每个转义符'\'前再次转义即'\\'</span></span><br><span class="line">path = <span class="string">'D:\\测试路径\\测试文件.txt'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="读取中文文本内容"><a href="#读取中文文本内容" class="headerlink" title="读取中文文本内容"></a>读取中文文本内容</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># py3</span></span><br><span class="line"><span class="keyword">with</span> open(test.txt, <span class="string">'r'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.readlines()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/" data-id="ck7c3lk3s001u68w01sarg8gg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" rel="tag">读取文件</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          记一次服务器ssh登陆修复
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/05/%E7%A3%81%E7%9B%98%E5%92%8Clinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">磁盘和linux文件系统</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-basic/">C++ basic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hello-World/">Hello World</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-basic/">Python basic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E8%AE%BE/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/">图片爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/123rf-com/" rel="tag">123rf.com</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Filezilla/" rel="tag">Filezilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="tag">Linux文件系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim%E4%B9%B1%E7%A0%81/" rel="tag">Vim乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim%E9%85%8D%E7%BD%AE/" rel="tag">Vim配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/baihe/" rel="tag">baihe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gettyimages/" rel="tag">gettyimages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/" rel="tag">spider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%90%88%E7%BD%91/" rel="tag">百合网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" rel="tag">读取文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8WAN-LAN/" rel="tag">路由器WAN,LAN</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/123rf-com/" style="font-size: 10px;">123rf.com</a> <a href="/tags/Filezilla/" style="font-size: 10px;">Filezilla</a> <a href="/tags/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">Linux文件系统</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Vim%E4%B9%B1%E7%A0%81/" style="font-size: 10px;">Vim乱码</a> <a href="/tags/Vim%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">Vim配置</a> <a href="/tags/baihe/" style="font-size: 10px;">baihe</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/gettyimages/" style="font-size: 10px;">gettyimages</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spider/" style="font-size: 15px;">spider</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 20px;">爬虫</a> <a href="/tags/%E7%99%BE%E5%90%88%E7%BD%91/" style="font-size: 10px;">百合网</a> <a href="/tags/%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" style="font-size: 10px;">读取文件</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8WAN-LAN/" style="font-size: 10px;">路由器WAN,LAN</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/04/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/03/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/">百合网图片爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/%E7%8F%8D%E7%88%B1%E7%BD%91-spider/">珍爱网图片爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/basic%20c++/">C++基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

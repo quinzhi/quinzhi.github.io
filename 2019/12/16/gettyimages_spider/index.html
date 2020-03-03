@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>gettyimages图片爬虫 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景www.gettyimages.com 应该是目前为止见过图片质量最高，数量最多的影像站了，从历史图片视频到文案素材应有尽有，拿来搜图片也是杠杠的，而且还没什么反爬，总之就是很爽。国内直接访问gettyimages一度被重定向到傻逼视觉中国，后来传出视觉中国违规和gettyimages合作，导致视觉中国暴了一波股价。 方案话不多说搜索抓包，没发现什么东西，那就直接F12主页面，搜索jpg、pn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gettyimages图片爬虫">
+<meta property="og:url" content="http://yoursite.com/2019/12/16/gettyimages_spider/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="背景www.gettyimages.com 应该是目前为止见过图片质量最高，数量最多的影像站了，从历史图片视频到文案素材应有尽有，拿来搜图片也是杠杠的，而且还没什么反爬，总之就是很爽。国内直接访问gettyimages一度被重定向到傻逼视觉中国，后来传出视觉中国违规和gettyimages合作，导致视觉中国暴了一波股价。 方案话不多说搜索抓包，没发现什么东西，那就直接F12主页面，搜索jpg、pn">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-16T09:51:08.000Z">
+<meta property="article:modified_time" content="2019-12-18T08:01:32.437Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="spider">
+<meta property="article:tag" content="gettyimages">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gettyimages_spider" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/16/gettyimages_spider/" class="article-date">
+  <time datetime="2019-12-16T09:51:08.000Z" itemprop="datePublished">2019-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/">图片爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gettyimages图片爬虫
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p><a href="http://www.gettyimages.com" target="_blank" rel="noopener">www.gettyimages.com</a> 应该是目前为止见过图片质量最高，数量最多的影像站了，从历史图片视频到文案素材应有尽有，拿来搜图片也是杠杠的，而且还没什么反爬，总之就是很爽。国内直接访问gettyimages一度被重定向到傻逼视觉中国，后来传出视觉中国违规和gettyimages合作，导致视觉中国暴了一波股价。</p>
+<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>话不多说搜索抓包，没发现什么东西，那就直接F12主页面，搜索jpg、png、bmp啥的都没找到，那就打开一个gettyimages的图片页面，看看图片url是啥样的，可以发现图片url里含有tag、即含有图片的文字描述，这个东西通常用于图片搜索，也就是说图片url内含有关键词，因此搜索一下关键词看看，找一下可以发现图片url。那就get一下看看html是什么样式的。可以发现它和123rf的不一样，行数较少，每一行的文本很大，需要提取的图片url内容集中在某些行内。肯定得用到正则了，然后图片都集中在某些行内，因此用findall放数组里就好了。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">match = <span class="string">'&#125;" ng-show='</span></span><br><span class="line">pattern = <span class="string">"thumb\" src=\"(http.*?=)\" /&gt;&lt;/?"</span>    <span class="comment"># re默认是贪婪模式，需要通过?来设定最小匹配</span></span><br><span class="line">pattern = re.compile(pattern)</span><br><span class="line"></span><br><span class="line">urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  <span class="comment"># 关闭ssl报警</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> end_indexing &lt; <span class="number">5</span>:                                 <span class="comment"># 避免一直翻页，5次没有新图片下载则结束程序</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">try</span>:                                            <span class="comment"># 提高健壮性，无论是否强制ssl都试一次</span></span><br><span class="line">            rep = requests.get(url, headers=headers, verufy=<span class="literal">False</span>)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(e)</span><br><span class="line">            rep = requests.get(url, headers=headers)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    keyword_path = os.path.join(final_path, keyword)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(keyword_path):</span><br><span class="line">        os.makedirs(keyword_path)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">r'.\\test_gettyimages.log'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(rep.content)</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">r'.\\test_gettyimages.log'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> fp:      <span class="comment"># 读取时出现invalid start byte </span></span><br><span class="line">        line_lst = fp.readlines()                             <span class="comment">#可以先以二进制读，再转成str处理</span></span><br><span class="line">        <span class="keyword">if</span> len(line_lst) &lt; <span class="number">5</span>:                              <span class="comment"># 超页，停止搜索</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    print(<span class="string">"++++++++++++++++++++++++++   getting from start index :"</span> + str(start_index))</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> line_lst:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            line = str(line, <span class="string">'utf-8'</span>)                <span class="comment"># 文本中有utf和别的混合编码，</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:                   <span class="comment"># 这里仍然可能出现invalid start byte 只有一两行，跳过即可</span></span><br><span class="line">            print(str(e))</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> line[<span class="number">0</span>:<span class="number">11</span>] == match <span class="keyword">and</span> len(line) &gt; <span class="number">300</span>:        <span class="comment"># 比较麻烦的地方就是从html里匹配出图片url了，</span></span><br><span class="line">            url_l = re.findall(pattern, line)               <span class="comment"># 需要一点时间和经验</span></span><br><span class="line">            <span class="keyword">if</span> len(url_l) == <span class="number">0</span>:</span><br><span class="line">                end_indexing += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> u <span class="keyword">in</span> url_l:</span><br><span class="line">                u = u.replace(<span class="string">'amp;'</span>, <span class="string">''</span>)</span><br><span class="line">                filename = u.split(<span class="string">'/'</span>)[<span class="number">-1</span>].split(<span class="string">'?'</span>)[<span class="number">0</span>] + <span class="string">'.jpg'</span></span><br><span class="line">                pic_path = os.path.join(keyword_path, filename)</span><br><span class="line">                <span class="keyword">if</span> os.path.isfile(pic_path):</span><br><span class="line">                    print(filename + <span class="string">' existed. skip'</span>)</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> count &gt;= <span class="number">30</span> <span class="keyword">and</span> count % <span class="number">30</span> == <span class="number">0</span>:           <span class="comment"># 只有一个ip，避免触发反爬</span></span><br><span class="line">						        print(<span class="string">"sleeping ..."</span>)</span><br><span class="line">						        time.sleep(<span class="number">15</span>)</span><br><span class="line"></span><br><span class="line">                print(<span class="string">'getting '</span>+filename+<span class="string">' ...'</span>)</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    pic = requests.get(u, headers=headers_2, verify=<span class="literal">False</span>, timeout=<span class="number">40</span>)   <span class="comment"># 不强制ssl</span></span><br><span class="line">                <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                    print(e)</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">with</span> open(pic_path, <span class="string">'wb'</span>) <span class="keyword">as</span> fp_2:</span><br><span class="line">                    fp_2.write(pic.content)</span><br><span class="line">                    end_indexing = <span class="number">0</span></span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    start_index += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p>还是一般图站爬虫的老一套，强制ssl、没有结果就中断等等，主要复习点是由于需要在一个大行内匹配多个对象，因此正则需要用?关键词来做最小匹配。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/16/gettyimages_spider/" data-id="ck7c3lk3a000i68w0ewo08ar3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gettyimages/" rel="tag">gettyimages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spider/" rel="tag">spider</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/18/basic%20c++/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          C++基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/16/123rf-spider/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">图片素材网站123rf.com爬虫</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-basic/">C++ basic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hello-World/">Hello World</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-basic/">Python basic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E8%AE%BE/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/">图片爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/123rf-com/" rel="tag">123rf.com</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Filezilla/" rel="tag">Filezilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="tag">Linux文件系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim%E4%B9%B1%E7%A0%81/" rel="tag">Vim乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim%E9%85%8D%E7%BD%AE/" rel="tag">Vim配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/baihe/" rel="tag">baihe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gettyimages/" rel="tag">gettyimages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/" rel="tag">spider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%90%88%E7%BD%91/" rel="tag">百合网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" rel="tag">读取文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8WAN-LAN/" rel="tag">路由器WAN,LAN</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/123rf-com/" style="font-size: 10px;">123rf.com</a> <a href="/tags/Filezilla/" style="font-size: 10px;">Filezilla</a> <a href="/tags/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">Linux文件系统</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Vim%E4%B9%B1%E7%A0%81/" style="font-size: 10px;">Vim乱码</a> <a href="/tags/Vim%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">Vim配置</a> <a href="/tags/baihe/" style="font-size: 10px;">baihe</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/gettyimages/" style="font-size: 10px;">gettyimages</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spider/" style="font-size: 15px;">spider</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 20px;">爬虫</a> <a href="/tags/%E7%99%BE%E5%90%88%E7%BD%91/" style="font-size: 10px;">百合网</a> <a href="/tags/%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" style="font-size: 10px;">读取文件</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8WAN-LAN/" style="font-size: 10px;">路由器WAN,LAN</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/04/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/03/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/">百合网图片爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/%E7%8F%8D%E7%88%B1%E7%BD%91-spider/">珍爱网图片爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/basic%20c++/">C++基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
