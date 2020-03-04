@@ -64,55 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/03/hello-world/" class="article-date">
-  <time datetime="2020-03-03T15:09:46.663Z" itemprop="datePublished">2020-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/03/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/03/hello-world/" data-id="ck7c2o5p10000wcw00f0ybaab" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-百合网-spider" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/" class="article-date">
@@ -681,6 +632,68 @@
 
 
   
+    <article id="post-磁盘和linux文件系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/05/%E7%A3%81%E7%9B%98%E5%92%8Clinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time datetime="2018-11-05T11:23:46.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/05/%E7%A3%81%E7%9B%98%E5%92%8Clinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">磁盘和linux文件系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于分区和文件系统"><a href="#关于分区和文件系统" class="headerlink" title="关于分区和文件系统"></a>关于分区和文件系统</h1><h2 id="为何分区"><a href="#为何分区" class="headerlink" title="为何分区"></a>为何分区</h2><p>1.方便系统管理<br>2.大大减少寻找文件的花销</p>
+<h2 id="硬盘分区的概念"><a href="#硬盘分区的概念" class="headerlink" title="硬盘分区的概念"></a>硬盘分区的概念</h2><p>信息是存储在硬盘上的，计算机中存放信息的主要的存储设备就是硬盘，但是硬盘不能直接使用，<br>必须对硬盘进行分割，分割成的一块一块的区域，区域就是磁盘分区。在传统的磁盘管理中，<br>将一个硬盘分为两大类分区：主分区和扩展分区。主分区是能够安装操作系统，能够进行计算机启动的分区，<br>这样的分区可以直接格式化，然后安装系统。而通过在扩展分区中在划分逻辑分区对系统分区进行扩展。<br>实际上所有的逻辑分区都是在一个分区类，只是逻辑上分开，这也是叫逻辑分区的原因。<br>但对用户来说一切都是透明了，我们看起来系统中有很多分区。下图能够清楚地了解到这个结构</p>
+<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><p><strong>将一个目录作为进入点，通过将磁盘分区挂载到该目录上，从该目录来进入、访问磁盘分区的数据</strong></p>
+<p>硬盘系统分区结构：</p>
+<p>Linux系统分区结构：</p>
+<p>在Linux中，磁盘分区和目录有以下的关系：<br>1.任何一个分区都必须挂载到某个目录上<br>2.目录是逻辑上的区分，分区是物理上的区分<br>3.磁盘和分区都必须挂载到目录树中的某个具体目录才能进行读写操作<br>4.根目录是所有Linux文件和目录所在的地方，需要挂载一个磁盘分区。</p>
+<h2 id="分区建议"><a href="#分区建议" class="headerlink" title="分区建议"></a>分区建议</h2><p>在安装系统的过程中，建议分别给 /、/boot、swap创建单独的分区。</p>
+<p>swap：可以理解为虚拟内存。一般情况下，真实内存如果小于4GB，则分配给swap的空间为真实内存的两倍。<br>        如果超过4GB，则分配同等大小的空间。<br>/：系统根目录。一般在主分区下，当然也可以分到扩展分区的逻辑分区中。<br>/boot：将它挂载到单独的分区中，一般200MB即可。主要用于系统启动。避免根目录所在的分区被塞满导致系统无法启动</p>
+<h1 id="查看空间大小"><a href="#查看空间大小" class="headerlink" title="查看空间大小"></a>查看空间大小</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df -h  查看Linux文件系统的使用情况</span><br><span class="line">du -sh 查看具体某个目录的使用情况</span><br></pre></td></tr></table></figure>
+
+<p>trick:存放数量级很大的文件，大小上T，数量在百万甚至千万级别的数据，可以直接固定几个分区，<br>这样每次需要查看这些数据的大小时，可以直接df -h 。用du -sh将花费很大的时间来计算数据大小。</p>
+<h1 id="关于”文件大小”和”占用空间”"><a href="#关于”文件大小”和”占用空间”" class="headerlink" title="关于”文件大小”和”占用空间”"></a>关于”文件大小”和”占用空间”</h1><p>首先，文件的大小和其所占用的空间存在一定的差异是肯定的，这个现象起始的原因就是因为系统的文件和索引<br>为了方面系统更便捷的管理文件，操作系统使用文件系统对各种文件进行管理（文件系统就是我们经常说的FAT32和NTFS等）<br>文件系统将硬盘分为很多个“簇”。</p>
+<p>以FAT32文件系统为例，fat32文件系统的簇大小是4KB。当我们要存储一个1KB的文件，那么它将占用4KB的空间，<br>要存储2KB的文件，所占用的文件大小也是4KB，而要存储2个2KB大小的文件时，其所占用的空间就为8KB。以此类推。<br>所以，当我们存储非常多的小文件的时候，其所占用的空间就越大，但很可能其实际的文件大小却很小，也就是这个道理。<br>同理，一个文件越大，其占用却没有使用的空间也就相对的小。</p>
+<h1 id="如何知道当前计算机使用了几个硬盘，这些硬盘如何分区？"><a href="#如何知道当前计算机使用了几个硬盘，这些硬盘如何分区？" class="headerlink" title="如何知道当前计算机使用了几个硬盘，这些硬盘如何分区？"></a>如何知道当前计算机使用了几个硬盘，这些硬盘如何分区？</h1><p>通过df查看磁盘使用情况</p>
+<p>例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">文件系统                 容量       已用       可用    已用% 挂载点 </span><br><span class="line">/dev/sda3              4956316   3565088   1135396 76% / </span><br><span class="line">tmpfs                   241320         12    241308   1%   /dev/shm </span><br><span class="line">/dev/sda6              4806904   2523708   2039012 56% /media/disk </span><br><span class="line">/dev/sda1              4956284   3529796   1170656 76% /media/_ </span><br><span class="line">/dev/sda5              4845056   2581484   2019388 57% /media/disk-1</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>/dev/    是所有设备文件所在的目录<br>xy       设备类型，通常是hd(IDE硬盘)或者sd(SCSI硬盘)<br>Z        表示所在硬盘标号，如/hda  /sda<br>N        分区号</p>
+<p>Linux的分区使用xyZN格式，其中xy表示硬盘类型，<br>如上面/dev/sda3中,dev即device是所有设备文件所在目录的目录名字，sd表示该硬盘的类型是SCSI硬盘。<br>Z表示硬盘序号，第一块硬盘即sda表示硬盘a，N表示分区号，如sda3表示一块SCSI类型的硬盘a的分区3<br>可以看上述例子只有一块硬盘a</p>
+<p>转载和参考：<br><a href="https://blog.csdn.net/gui951753/article/details/79032190" target="_blank" rel="noopener">csdn</a><br><a href="http://www.2cto.com/os/201203/123035.html" target="_blank" rel="noopener">personal blog</a><br><a href="https://www.cnblogs.com/oxspirt/p/6106055.html" target="_blank" rel="noopener">csdn</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/05/%E7%A3%81%E7%9B%98%E5%92%8Clinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-id="ck7c3lk3n001g68w0ab8l2a7m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="tag">Linux文件系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -725,7 +738,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -736,10 +749,6 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2020/03/03/hello-world/">Hello World</a>
-          </li>
         
           <li>
             <a href="/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/">百合网图片爬虫</a>
@@ -755,6 +764,10 @@
         
           <li>
             <a href="/2019/12/16/gettyimages_spider/">gettyimages图片爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/16/123rf-spider/">图片素材网站123rf.com爬虫</a>
           </li>
         
       </ul>

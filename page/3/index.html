@@ -64,47 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-爬虫" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/08/%E7%88%AC%E8%99%AB/" class="article-date">
-  <time datetime="2018-10-08T11:30:26.000Z" itemprop="datePublished">2018-10-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/">图片爬虫</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/08/%E7%88%AC%E8%99%AB/">爬取yandex.re的色图</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Download image from yandex.re</span></span><br><span class="line"><span class="comment"># the image size is original</span></span><br><span class="line"><span class="comment"># work slow and ez be ban</span></span><br><span class="line"><span class="comment"># u can change the sleep time to chanege the speed</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> urlparse <span class="keyword">import</span> urlsplit</span><br><span class="line"><span class="keyword">from</span> os.path <span class="keyword">import</span> basename</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parseImgUrl</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'[+] Finding Url for image on '</span>+url</span><br><span class="line">        urlContent = urllib2.urlopen(url)</span><br><span class="line">        soup = BeautifulSoup(urlContent, <span class="string">'lxml'</span>)</span><br><span class="line">        imgurl = soup.findAll(<span class="string">'a'</span>, &#123;<span class="string">'class'</span> : <span class="string">'directlink largeimg'</span>&#125;)</span><br><span class="line">        <span class="keyword">return</span> imgurl</span><br><span class="line">    <span class="keyword">except</span> Exception, e:</span><br><span class="line">        <span class="keyword">print</span> e</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">downloadImages</span><span class="params">(image)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'[+]Downloadng image ...'</span></span><br><span class="line">    imgcontent = urllib2.urlopen(image).read()</span><br><span class="line">    imgFileName = basename(urlsplit(image)[<span class="number">2</span>])</span><br><span class="line">    imgFile = open(imgFileName,<span class="string">"wb"</span>)</span><br><span class="line">    imgFile.write(imgcontent)</span><br><span class="line">    imgFile.close()</span><br><span class="line">    <span class="keyword">return</span> imgFileName</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>,<span class="number">13</span>):  <span class="comment"># the page range</span></span><br><span class="line">        Url = <span class="string">'https://yande.re/post?page='</span>+str(i)+<span class="string">'&amp;tags=atago_%28kancolle%29'</span> <span class="comment"># the source url</span></span><br><span class="line">        image = parseImgUrl(Url)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> image:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> count%<span class="number">20</span> == <span class="number">0</span>:  <span class="comment"># sleep every 20 times</span></span><br><span class="line">                time.sleep(<span class="number">20</span>)</span><br><span class="line">            url = i.get(<span class="string">'href'</span>)</span><br><span class="line">            downloadImages(url)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">'__main__'</span>:</span><br><span class="line">    main(</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/%E7%88%AC%E8%99%AB/" data-id="ck7c3lk3j001268w0empq8azy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-blog" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/08/blog/" class="article-date">
@@ -380,7 +339,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -391,10 +350,6 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2020/03/03/hello-world/">Hello World</a>
-          </li>
         
           <li>
             <a href="/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/">百合网图片爬虫</a>
@@ -410,6 +365,10 @@
         
           <li>
             <a href="/2019/12/16/gettyimages_spider/">gettyimages图片爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/16/123rf-spider/">图片素材网站123rf.com爬虫</a>
           </li>
         
       </ul>
