@@ -1,814 +1,1267 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Quin&#39;s site</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Quin&#39;s site">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="&quot;Just for fun&quot;">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="&quot;Just for fun&quot;">
 <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta property="og:title" content="Quin&#39;s site">
+<meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Quin&#39;s site">
 <meta property="og:description" content="&quot;Just for fun&quot;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-18T08:08:37.000Z">
-<meta property="article:modified_time" content="2019-12-18T08:11:10.137Z">
 <meta property="article:author" content="Quin">
 <meta name="twitter:card" content="summary">
 
+<link rel="canonical" href="http://yoursite.com/">
 
-<link rel="icon" href="/img/avatar.jpg">
 
-<link href="/css/style.css?v=1.0.1" rel="stylesheet">
-
-<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
-
-<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
-<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
-
-<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script>
-    hljs.initHighlightingOnLoad();
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false
+  };
 </script>
 
-<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
-
-
-
-<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
-
-<script src="/js/iconfont.js?v=1.0.1" ></script>
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-<div style="display: none">
-  <input class="theme_disqus_on" value="false">
-  <input class="theme_preload_comment" value="false">
-  <input class="theme_blog_path" value="">
-</div>
-
-<body>
-<aside class="nav mobile">
-    <div class="nav-left">
-        <a href="/" class="avatar_target">
-    <img class="avatar" src="/img/avatar.jpg" />
-</a>
-<div class="author">
-    <span>Quin</span>
-</div>
-
-<div class="icon">
-    
-        
-        <a title="rss" href="/atom.xml" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-rss"></use>
-                </svg>
-            
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-</div>
+  <title>Quin's site</title>
+  
 
 
 
 
-<ul>
-    <li><div class="all active">全部文章<small>(25)</small></div></li>
-    
-        
-            
-            <li><div data-rel="图片爬虫">图片爬虫<small>(4)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="Python basic">Python basic<small>(4)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="Vim">Vim<small>(2)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="工具使用">工具使用<small>(1)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="博客建设">博客建设<small>(1)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="Hello World">Hello World<small>(1)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="数据处理">数据处理<small>(1)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="C++ basic">C++ basic<small>(1)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="Linux">Linux<small>(3)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="OpenCV">OpenCV<small>(1)</small></div>
-                
-            </li>
-            
-        
-    
-</ul>
-<div class="left-bottom">
-    <div class="menus">
-    
-    
-    
-    
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
-</div>
-<input type="hidden" id="yelog_site_posts_number" value="25">
+  </div>
 
-<div style="display: none">
-    <span id="busuanzi_value_site_uv"></span>
-    <span id="busuanzi_value_site_pv"></span>
+  <div class="site-meta custom-logo">
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/images/apple-touch-icon-next.png" alt="Quin's site">
+        </a>
+      </div>
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Quin's site</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
 </div>
 
-    </div>
-    <div class="nav-right">
-        <div class="friends-area">
-    <div class="friends-title">
-        友情链接
-        <i class="back-title-list"></i>
-    </div>
-    <div class="friends-content">
-        <ul>
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
             
-            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
-            
-        </ul>
-    </div>
-</div>
-        <div class="title-list">
-    <form onkeydown="if(event.keyCode === 13){return false;}">
-        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
-        <i class="cross"></i>
-        <span>
-            <label for="tagswitch">Tags:</label>
-            <input id="tagswitch" type="checkbox" style="display: none" />
-            <i id="tagsWitchIcon"></i>
-        </span>
-    </form>
-    <div class="tags-list">
-    
-    <li class="article-tag-list-item">
-        <a class="color5">123rf.com</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">爬虫</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">spider</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color5">Filezilla</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">Vim乱码</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">Vim配置</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">vim</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">gettyimages</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">c++</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">指针</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">百合网</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">baihe</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">服务器</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color5">Linux文件系统</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">linux</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">SSH</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">路由器WAN,LAN</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color5">读取文件</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">OpenCV</a>
-    </li>
-    
-    <div class="clearfix"></div>
-</div>
 
-    
-    <nav id="title-list-nav">
+  <div class="posts-expand">
         
-        <a  class="图片爬虫 "
-           href="/2019/12/16/123rf-spider/"
-           data-tag="123rf.com,爬虫,spider"
-           data-author="" >
-            <span class="post-title" title="图片素材网站123rf.com爬虫">图片素材网站123rf.com爬虫</span>
-            <span class="post-date" title="2019-12-16 12:01:14">2019/12/16</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/10/10/Leetcode-0/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Leetcode#0">Leetcode#0</span>
-            <span class="post-date" title="2018-10-10 11:31:00">2018/10/10</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/05/20/FileZilla%E7%9A%84%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/"
-           data-tag="Filezilla"
-           data-author="" >
-            <span class="post-title" title="FileZilla的导出文件处理脚本">FileZilla的导出文件处理脚本</span>
-            <span class="post-date" title="2019-05-20 17:49:37">2019/05/20</span>
-        </a>
-        
-        <a  class="Python basic "
-           href="/2018/10/09/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Python内建数据结构">Python内建数据结构</span>
-            <span class="post-date" title="2018-10-09 14:06:52">2018/10/09</span>
-        </a>
-        
-        <a  class="Python basic "
-           href="/2018/10/09/Python%E8%BF%94%E5%9B%9E%E5%80%BC/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Python返回值">Python返回值</span>
-            <span class="post-date" title="2018-10-09 18:08:43">2018/10/09</span>
-        </a>
-        
-        <a  class="Vim "
-           href="/2018/10/08/Vim%E3%80%81Gvim%E5%9C%A8windows%E4%B8%8B%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"
-           data-tag="Vim乱码,Vim配置"
-           data-author="" >
-            <span class="post-title" title="Vim基础配置">Vim基础配置</span>
-            <span class="post-date" title="2018-10-08 15:20:33">2018/10/08</span>
-        </a>
-        
-        <a  class="Vim "
-           href="/2018/10/23/Vim%E5%88%9D%E7%BA%A7/"
-           data-tag="vim"
-           data-author="" >
-            <span class="post-title" title="Vim初级">Vim初级</span>
-            <span class="post-date" title="2018-10-23 18:03:01">2018/10/23</span>
-        </a>
-        
-        <a  class="工具使用 "
-           href="/2018/10/08/processmonitor/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ProcessMonitor的简单使用">ProcessMonitor的简单使用</span>
-            <span class="post-date" title="2018-10-08 19:39:41">2018/10/08</span>
-        </a>
-        
-        <a  class="博客建设 "
-           href="/2018/10/08/blog/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="hexo+github+vim 搭建博客">hexo+github+vim 搭建博客</span>
-            <span class="post-date" title="2018-10-08 19:26:25">2018/10/08</span>
-        </a>
-        
-        <a  class="图片爬虫 "
-           href="/2019/12/16/gettyimages_spider/"
-           data-tag="爬虫,spider,gettyimages"
-           data-author="" >
-            <span class="post-title" title="gettyimages图片爬虫">gettyimages图片爬虫</span>
-            <span class="post-date" title="2019-12-16 17:51:08">2019/12/16</span>
-        </a>
-        
-        <a  class="Hello World "
-           href="/2018/10/08/world/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Hello">Hello</span>
-            <span class="post-date" title="2018-10-08 14:57:42">2018/10/08</span>
-        </a>
-        
-        <a  class="Python basic "
-           href="/2018/10/08/some_code/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="一些数据处理用到的小工具">一些数据处理用到的小工具</span>
-            <span class="post-date" title="2018-10-08 15:01:27">2018/10/08</span>
-        </a>
-        
-        <a  class="数据处理 "
-           href="/2018/10/08/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E6%AE%B5%E5%8F%8A%E6%80%BB%E7%BB%93/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="数据处理常用代码段及总结">数据处理常用代码段及总结</span>
-            <span class="post-date" title="2018-10-08 16:50:42">2018/10/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/10/24/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="文件系统">文件系统</span>
-            <span class="post-date" title="2018-10-24 14:36:54">2018/10/24</span>
-        </a>
-        
-        <a  class="C++ basic "
-           href="/2019/12/18/basic%20c++/"
-           data-tag="c++,指针"
-           data-author="" >
-            <span class="post-title" title="C++基础">C++基础</span>
-            <span class="post-date" title="2019-12-18 14:16:38">2019/12/18</span>
-        </a>
-        
-        <a  class="图片爬虫 "
-           href="/2018/10/08/%E7%88%AC%E8%99%AB/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="爬取yandex.re的色图">爬取yandex.re的色图</span>
-            <span class="post-date" title="2018-10-08 19:30:26">2018/10/08</span>
-        </a>
-        
-        <a  class="图片爬虫 "
-           href="/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/"
-           data-tag="爬虫,百合网,baihe"
-           data-author="" >
-            <span class="post-title" title="百合网图片爬虫">百合网图片爬虫</span>
-            <span class="post-date" title="2019-12-19 16:14:40">2019/12/19</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/19/%E7%8F%8D%E7%88%B1%E7%BD%91-spider/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="珍爱网图片爬虫">珍爱网图片爬虫</span>
-            <span class="post-date" title="2019-12-19 16:14:26">2019/12/19</span>
-        </a>
-        
-        <a  class="Linux "
-           href="/2018/10/24/%E7%AE%80%E5%8D%95%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%A3%80%E6%9F%A5%E8%84%9A%E6%9C%AC/"
-           data-tag="服务器"
-           data-author="" >
-            <span class="post-title" title="简单的服务器配置检查脚本">简单的服务器配置检查脚本</span>
-            <span class="post-date" title="2018-10-24 14:37:34">2018/10/24</span>
-        </a>
-        
-        <a  class="Linux "
-           href="/2018/11/05/%E7%A3%81%E7%9B%98%E5%92%8Clinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"
-           data-tag="Linux文件系统"
-           data-author="" >
-            <span class="post-title" title="磁盘和linux文件系统">磁盘和linux文件系统</span>
-            <span class="post-date" title="2018-11-05 19:23:46">2018/11/05</span>
-        </a>
-        
-        <a  class="Linux "
-           href="/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/"
-           data-tag="linux,SSH"
-           data-author="" >
-            <span class="post-title" title="记一次服务器ssh登陆修复">记一次服务器ssh登陆修复</span>
-            <span class="post-date" title="2018-12-03 20:02:50">2018/12/03</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/05/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84WAN%E5%92%8CLAN/"
-           data-tag="路由器WAN,LAN"
-           data-author="" >
-            <span class="post-title" title="路由器的WAN和LAN">路由器的WAN和LAN</span>
-            <span class="post-date" title="2018-12-05 19:33:15">2018/12/05</span>
-        </a>
-        
-        <a  class="Python basic "
-           href="/2018/10/19/%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="数据整理总结">数据整理总结</span>
-            <span class="post-date" title="2018-10-19 14:25:36">2018/10/19</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/"
-           data-tag="读取文件"
-           data-author="" >
-            <span class="post-title" title="python文本读写及初步处理">python文本读写及初步处理</span>
-            <span class="post-date" title="2018-11-15 17:40:21">2018/11/15</span>
-        </a>
-        
-        <a  class="OpenCV "
-           href="/2018/10/27/OpenCV%E5%9F%BA%E7%A1%80/"
-           data-tag="OpenCV"
-           data-author="" >
-            <span class="post-title" title="OpenCV基础">OpenCV基础</span>
-            <span class="post-date" title="2018-10-27 16:05:38">2018/10/27</span>
-        </a>
-        
-    </nav>
-</div>
-    </div>
-    <div class="hide-list">
-        <div class="semicircle">
-            <div class="brackets first"><</div>
-            <div class="brackets">&gt;</div>
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/%E7%99%BE%E5%90%88%E7%BD%91-spider/" class="post-title-link" itemprop="url">百合网图片爬虫</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-19 16:14:40" itemprop="dateCreated datePublished" datetime="2019-12-19T16:14:40+08:00">2019-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-20 18:27:31" itemprop="dateModified" datetime="2019-12-20T18:27:31+08:00">2019-12-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">图片爬虫</span></a>
+                </span>
+            </span>
+
+          
+
         </div>
-    </div>
-</aside>
-<div class="post index">
-    <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+      </header>
+
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于叶落阁"><span class="toc-text">关于叶落阁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#博客平台"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
     
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-    .toc-level-3 i,
-    .toc-level-3 ol {
-        display: none !important;
-    }
-</style>
-</div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于叶落阁"><a href="#关于叶落阁" class="headerlink" title="关于叶落阁"></a>关于叶落阁</h2><p><strong>叶落阁</strong> 是阿杰（杨玉杰）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 生成，部署在 <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>，主题 <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank" rel="noopener">3-hexo</a> 已经在github上开源</p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a href='http://yelog.org/2017/03/24/3-hexo-shortcuts/' target="_blank" rel="noopener">3-hexo快捷键说明</a></li>
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><ul>
+<li>收集年龄性别图片数据，婚恋网站就很不错，先拿百合网试试。</li>
+</ul>
+<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><ul>
+<li>访问主页，发现需要登陆，个人信息当然不能随便就这么交出去。随便找个云短信平台拿手机号注册一下，账号已注册的话就找回密码好了。登陆进去话不多说直奔搜索，点开就是一堆美女，下拉发现是动态加载的页面，很烦，不想用selenium。总之先抓包看看，照例先选筛选xhr，发现一个getuserlist接口，后边跟着一堆userid。那就可以尝试一下。可以，返回一个json，json里该有的都有。注意到我需要获取的是尽可能多的图片以及对应的年龄性别。json里的年龄自然是当前年龄，而我需要的是图片年龄，假设用户上传的是近期照，那么还需要上传日期，观察一下发现用户照片url里含有图片上传日期。这样就能计算图片年龄了。用户id是纯数字，意味着我可以通过直接遍历userid来遍历所有用户。</li>
 </ul>
 
-        </article>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/%E7%8F%8D%E7%88%B1%E7%BD%91-spider/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/%E7%8F%8D%E7%88%B1%E7%BD%91-spider/" class="post-title-link" itemprop="url">珍爱网图片爬虫</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-19 16:14:26 / Modified: 17:43:36" itemprop="dateCreated datePublished" datetime="2019-12-19T16:14:26+08:00">2019-12-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
-    </div>
-    <div class="copyright">
-        <p class="footer-entry">©2018-2021 quinzhi</p>
-<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/basic%20c++/">
 
-    </div>
-    <div class="full-toc">
-        <button class="full"><span class="min "></span></button>
-<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
-<div class="post-toc"><span class="post-toc-title">目录</span>
-    <div class="post-toc-content">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/18/basic%20c++/" class="post-title-link" itemprop="url">C++基础</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-18 14:16:38" itemprop="dateCreated datePublished" datetime="2019-12-18T14:16:38+08:00">2019-12-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-30 18:32:35" itemprop="dateModified" datetime="2019-12-30T18:32:35+08:00">2019-12-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-basic/" itemprop="url" rel="index"><span itemprop="name">C++ basic</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><h2 id="数据的排布方式-大端模式和小端模式"><a href="#数据的排布方式-大端模式和小端模式" class="headerlink" title="数据的排布方式-大端模式和小端模式"></a>数据的排布方式-大端模式和小端模式</h2><ul>
+<li>根据数据在内存中排布顺序不同，数据的排布可以分为大端模式和小端模式，大小端和芯片和编译平台有关，c中一般是小端，java中一般是大端，而网络传输数据一般是大端模式。</li>
+<li>大端模式: 数据的高位存放在低地址，数据的低位存放在高地址</li>
+<li>小端模式：数据的高位存放在高地址，数据的地位存放在低地址</li>
+<li>数字型数据如int a = 1234，左边为数据的高位，右边为数据的低位</li>
+<li>字符型数据如 char * a = “abcd”,左边为数据的低位，右边为数据的高位</li>
+</ul>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h3 id="指针的含义和大小"><a href="#指针的含义和大小" class="headerlink" title="指针的含义和大小"></a>指针的含义和大小</h3><ul>
+<li><p>64位系统中，1 word = 8 byte。32位系统中，1 word = 4 byte。其中 1 byte = 8 bit，64=8*8，32=4*8，即系统的位数其实就是系统中一个字所占的bit数</p>
+</li>
+<li><p><strong>指针就是一个地址</strong>，指针的大小和cpu、操作系统位数、编译器有关、因为系统是向下兼容的，所以取这些变量里最小的值作为指针的大小。指针的大小通常为4byte或者8byte。<strong>指针的大小和指针指向的类型无关</strong></p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> * a;</span><br><span class="line"><span class="keyword">int</span> * b;</span><br><span class="line"><span class="keyword">char</span> *c;</span><br><span class="line">short *d;</span><br><span class="line"><span class="keyword">long</span> *e;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, <span class="keyword">sizeof</span>(b), <span class="keyword">sizeof</span>(*b));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, <span class="keyword">sizeof</span>(c), <span class="keyword">sizeof</span>(*c));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, <span class="keyword">sizeof</span>(d), <span class="keyword">sizeof</span>(*d));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, <span class="keyword">sizeof</span>(e), <span class="keyword">sizeof</span>(*e));</span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 </span><br><span class="line">4 4</span><br><span class="line">4 1</span><br><span class="line">4 2</span><br><span class="line">4 4</span><br></pre></td></tr></table></figure>
+<ul>
+<li>之所以要给指针指定类型，是因为不同类型的变量大小不同，指定类型后在通过该指针取值时，才知道取该地址的值后的一个1个byte还是2个byte还是多少byte。注意到void * a是没有类型的，因此不能取其指向值的大小，因为系统也不知道它指向值的大小。void * 通常用于传入别的指针，操作系统通过变量的起始地址和该变量的大小来取值，这是底层的基本思想。</li>
+</ul>
+<h3 id="指针的加减"><a href="#指针的加减" class="headerlink" title="指针的加减"></a>指针的加减</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>  b=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">char</span> c=<span class="string">'a'</span>;</span><br><span class="line">short d = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">long</span> e = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p %p\n"</span>, &amp;b, &amp;b+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p %p\n"</span>, &amp;c, &amp;c+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p %p\n"</span>, &amp;d, &amp;d+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p %p\n"</span>, &amp;e, &amp;e+<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0113FED0 0113FED4</span><br><span class="line">0113FEC7 0113FEC8</span><br><span class="line">0113FEB8 0113FEBA</span><br><span class="line">0113FEAC 0113FEB0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以看到不同类型的指针+1所增加的字节是不同的，指针的加减和其指向的类型相关，加减都是根据其大小作为基本的运算单位来计算的。如对int * 来说+1会使其增加4byte，对char * 来说+1会使其增加1byte，和上面相同，void * 不支持加减运算，因为其指向的大小未知。</li>
+</ul>
+<h2 id="数组、字符串、字符数组和指针数组"><a href="#数组、字符串、字符数组和指针数组" class="headerlink" title="数组、字符串、字符数组和指针数组"></a>数组、字符串、字符数组和指针数组</h2><h3 id="关于格式化输出函数printf"><a href="#关于格式化输出函数printf" class="headerlink" title="关于格式化输出函数printf"></a>关于格式化输出函数printf</h3><ul>
+<li>printf的输入输出和其标志符相关，为了更好的理解指针、字符串和数组，需要理解这个函数</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">char *a='aaaa';</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s\n"</span>, a);         <span class="comment">// %s会将输入值作为指针处理，即会取输入值指向的值，读取遇到\0字符时结束</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, a);       <span class="comment">// %c会打印输入值的字符形式，长度是1byte</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, *a);        </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a);        <span class="comment">// %d会打印输入值的十进制，长度是4byte</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%x\n"</span>, a);        <span class="comment">//%x会打印输入值的十六进制，长度是4byte</span></span><br></pre></td></tr></table></figure>
+
+<p>输出结果:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aaaa          </span><br><span class="line">0             // 这里输入值是a，即地址，该地址的值可以看到是0x00196b30，由于我是小端，即内存中低地址指向的值是低位0x30，0x30的字符形式就是‘0’</span><br><span class="line">a            </span><br><span class="line">1665840</span><br><span class="line">196b30</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组和字符串"><a href="#数组和字符串" class="headerlink" title="数组和字符串"></a>数组和字符串</h3><ul>
+<li>C\C++中通过指针来表示字符串和数组，这个也很好理解，数组就是一段连续的地址，只需给定一个起始地址和其大小，便能通过一段连续的空间来存放字符串和数组。其中字符串和字符数组其实是一个东西，唯一的区别是字符串以空字符\0来结束，这也很好理解，因为字符数组的大小是已知的，但char * 来表示字符串时并没有规定大小，只有起始地址，因此需要一个结束字符。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *a = <span class="string">"abcd"</span>;                         <span class="comment">//字符串</span></span><br><span class="line"><span class="keyword">char</span> b[] = &#123; <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'a'</span> &#125;;        <span class="comment">//字符数组</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s\n"</span>, a);      </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s\n"</span>, a+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s\n"</span>, a+<span class="number">2</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s\n"</span>, a+<span class="number">3</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"---------------\n"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, *(a+<span class="number">4</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *(a+<span class="number">4</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%x\n"</span>, *(a+<span class="number">4</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"---------------\n"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, *b);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, *(b+<span class="number">1</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, *(b+<span class="number">2</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, *(b+<span class="number">3</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"---------------\n"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, b[<span class="number">0</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, b[<span class="number">1</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, b[<span class="number">2</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c\n"</span>, b[<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">abcd           </span><br><span class="line">bcd         // 可以发现%s会将输入值作为指针处理，并且遇到\0结束，\0是不可打印字符</span><br><span class="line">cd</span><br><span class="line">d</span><br><span class="line">---------------</span><br><span class="line">                                // 不可打印字符\0</span><br><span class="line">0                               // \0的十进制值是0</span><br><span class="line">0                               //  \0的十六进制是0x00</span><br><span class="line">---------------</span><br><span class="line">a                            //字符数组可以通过数组形式 b[i]来取值，也可以像字符串一样通过指针取值*(b+i)</span><br><span class="line">a</span><br><span class="line">a</span><br><span class="line">a</span><br><span class="line">---------------</span><br><span class="line">a</span><br><span class="line">a</span><br><span class="line">a</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<h3 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h3><ul>
+<li>顾名思义就是元素为指针的数组，其实挺简单的<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *a = <span class="string">"abcdaaaaaaaaaaaaaaaaaaaaaaaaaa"</span>;</span><br><span class="line"><span class="keyword">char</span> *b = <span class="string">"1234"</span>;</span><br><span class="line"><span class="keyword">char</span> *c = <span class="string">"xxxx"</span>;</span><br><span class="line"><span class="keyword">char</span> *d = <span class="string">"oooo"</span>;</span><br><span class="line"><span class="keyword">char</span> *e[] = &#123; a, b, c, d &#125;;                # 指针数组</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s %x\n"</span>, e[<span class="number">0</span>], e[<span class="number">0</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s %x\n"</span>, e[<span class="number">1</span>], e[<span class="number">1</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s %x\n"</span>, e[<span class="number">2</span>], e[<span class="number">2</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s %x\n"</span>, e[<span class="number">3</span>], e[<span class="number">3</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"-------------------\n"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p\n"</span>, e);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p\n"</span>, e+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"-------------------\n"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s %x\n"</span>, *e, *e);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s %x\n"</span>, *(e+<span class="number">1</span>), *(e+<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>输出结果:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">abcdaaaaaaaaaaaaaaaaaaaaaaaaaa 2b6b30    // 注意指针数组放的是每个字符串的首地址，不是原先的数据</span><br><span class="line">1234 2b6b58</span><br><span class="line">xxxx 2b6b60</span><br><span class="line">oooo 2b6b68</span><br><span class="line">-------------------</span><br><span class="line">0136F754                         // 指针数组的地址</span><br><span class="line">0136F758                          // 指针数组地址+1</span><br><span class="line">-------------------</span><br><span class="line">abcdaaaaaaaaaaaaaaaaaaaaaaaaaa 2b6b30</span><br><span class="line">1234 2b6b58</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>指针数组存放的是地址</strong>，从这里可以看出指针数组的类型似乎意义不大，因为每个元素的大小是固定的，就是地址的长度。字符串和字符指针的区别，除了结尾的/0之外，还有<strong><em>通过<code>char *ptr = &quot;aaaa&quot;</code><br>这种方式初始化的属于常量，有自己的存储区，不可修改</em></strong>。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *a = <span class="string">"aaaaaa"</span>;   <span class="comment">// 字符串</span></span><br><span class="line"><span class="keyword">char</span> b[<span class="number">6</span>] = <span class="string">"aaaaaa"</span>;    <span class="comment">// 字符数组</span></span><br><span class="line"></span><br><span class="line">*a = <span class="string">'b'</span>;          <span class="comment">// 报错，a是常量，不可修改</span></span><br><span class="line">b = <span class="string">'b'</span>;             <span class="comment">// 可以修改</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="指针函数"><a href="#指针函数" class="headerlink" title="指针函数"></a>指针函数</h2><h3 id="什么是函数指针"><a href="#什么是函数指针" class="headerlink" title="什么是函数指针"></a>什么是函数指针</h3><ul>
+<li>函数指针就是指向函数入口的指针(真就万物皆可指针)，和别的变量一样，函数也可以通过指针访问。第一次接触函数指针是在执行shellcode的时候，需要将一段字符串转换成函数并执行。程序来自<a href="https://bruce30262.github.io/ais3-2015-pre-exam-complete-writeup/" target="_blank" rel="noopener">某大佬的博客</a>，这是一段linux的shellcode，程序要在linux下编译执行</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> code[] = <span class="string">"\x48\xb8\xb5\xa3\xb9\xb1\xc6\x41\x41\x41\x50\x48\xb8\xbc\xa0\xa9\x93\xaa\xa3\xbe\x93\x50\x48\xb8\xa9\x93\xa5\xbf\x93\xbf\xa5\xa1\x50\x48\xb8\xbf\xa4\xa9\xa0\xa0\xaf\xa3\xa8\x50\x48\xb8\x8d\x85\x9f\xff\xb7\xa3\xa7\x93\x50\x48\x89\xe6\x48\x31\xd2\x80\x34\x16\xcc\xfe\xc2\x80\xfa\x25\x75\xf5\x48\x31\xc0\x48\xff\xc0\x48\x89\xc7\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> (*func)();                  <span class="comment">// 声明指针函数func</span></span><br><span class="line">	func = (<span class="keyword">int</span> (*)()) code;      <span class="comment">// 强转code为func的指针类型  char* -&gt; int(*)()</span></span><br><span class="line">	(<span class="keyword">int</span>)(*func)();        <span class="comment">// 函数调用</span></span><br><span class="line">	func();                 <span class="comment">// 这种方式也可以</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中<code>int (*func) ()</code>就是声明一个返回值为int、参数为空的函数func的指针</li>
+<li>同理<code>void* (*func) (int a)</code>就是声明一个返回值为指针，参数为int a的函数func的指针</li>
+</ul>
+<ul>
+<li>编译</li>
+<li>注意到我们这里是将一个局部变量作为函数执行，这个变量是字符数组，该值存在栈中。一些操作系统在编译的时候默认会加上安全编译选项，如堆栈不可执行，因此我们这里要把这个选项关掉，通过<code>-z execstack</code>,如果编译时没有加上该选项，那么我这里会报段错误</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -o test -z execstack</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结果自然是能运行，打了个flag，是某ctf比赛的题目</li>
+</ul>
+<ul>
+<li>既然说到字符数组，可以想到前面指针数组内容里提到的，字符数组和字符串的存储区域不同，字符串存储于常量存储区且不可修改，字符数组作为局部变量存在于main的栈上，如果我们将shellcode从字符数组换成字符串，那么不需要关闭堆栈不可执行保护程序也能运行。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">char</span> *code = <span class="string">"\x48\xb8\xb5\xa3\xb9\xb1\xc6\x41\x41\x41\x50\x48\xb8\xbc\xa0\xa9\x93\xaa\xa3\xbe\x93\x50\x48\xb8\xa9\x93\xa5\xbf\x93\xbf\xa5\xa1\x50\x48\xb8\xbf\xa4\xa9\xa0\xa0\xaf\xa3\xa8\x50\x48\xb8\x8d\x85\x9f\xff\xb7\xa3\xa7\x93\x50\x48\x89\xe6\x48\x31\xd2\x80\x34\x16\xcc\xfe\xc2\x80\xfa\x25\x75\xf5\x48\x31\xc0\x48\xff\xc0\x48\x89\xc7\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05"</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -o test</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果自然是意料之中的</p>
+</li>
+</ul>
+
+      
     </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/gettyimages_spider/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/16/gettyimages_spider/" class="post-title-link" itemprop="url">gettyimages图片爬虫</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-16 17:51:08" itemprop="dateCreated datePublished" datetime="2019-12-16T17:51:08+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-18 16:01:32" itemprop="dateModified" datetime="2019-12-18T16:01:32+08:00">2019-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">图片爬虫</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p><a href="http://www.gettyimages.com" target="_blank" rel="noopener">www.gettyimages.com</a> 应该是目前为止见过图片质量最高，数量最多的影像站了，从历史图片视频到文案素材应有尽有，拿来搜图片也是杠杠的，而且还没什么反爬，总之就是很爽。国内直接访问gettyimages一度被重定向到傻逼视觉中国，后来传出视觉中国违规和gettyimages合作，导致视觉中国暴了一波股价。</p>
+<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>话不多说搜索抓包，没发现什么东西，那就直接F12主页面，搜索jpg、png、bmp啥的都没找到，那就打开一个gettyimages的图片页面，看看图片url是啥样的，可以发现图片url里含有tag、即含有图片的文字描述，这个东西通常用于图片搜索，也就是说图片url内含有关键词，因此搜索一下关键词看看，找一下可以发现图片url。那就get一下看看html是什么样式的。可以发现它和123rf的不一样，行数较少，每一行的文本很大，需要提取的图片url内容集中在某些行内。肯定得用到正则了，然后图片都集中在某些行内，因此用findall放数组里就好了。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">match = <span class="string">'&#125;" ng-show='</span></span><br><span class="line">pattern = <span class="string">"thumb\" src=\"(http.*?=)\" /&gt;&lt;/?"</span>    <span class="comment"># re默认是贪婪模式，需要通过?来设定最小匹配</span></span><br><span class="line">pattern = re.compile(pattern)</span><br><span class="line"></span><br><span class="line">urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  <span class="comment"># 关闭ssl报警</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> end_indexing &lt; <span class="number">5</span>:                                 <span class="comment"># 避免一直翻页，5次没有新图片下载则结束程序</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">try</span>:                                            <span class="comment"># 提高健壮性，无论是否强制ssl都试一次</span></span><br><span class="line">            rep = requests.get(url, headers=headers, verufy=<span class="literal">False</span>)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(e)</span><br><span class="line">            rep = requests.get(url, headers=headers)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    keyword_path = os.path.join(final_path, keyword)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(keyword_path):</span><br><span class="line">        os.makedirs(keyword_path)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">r'.\\test_gettyimages.log'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(rep.content)</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">r'.\\test_gettyimages.log'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> fp:      <span class="comment"># 读取时出现invalid start byte </span></span><br><span class="line">        line_lst = fp.readlines()                             <span class="comment">#可以先以二进制读，再转成str处理</span></span><br><span class="line">        <span class="keyword">if</span> len(line_lst) &lt; <span class="number">5</span>:                              <span class="comment"># 超页，停止搜索</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    print(<span class="string">"++++++++++++++++++++++++++   getting from start index :"</span> + str(start_index))</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> line_lst:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            line = str(line, <span class="string">'utf-8'</span>)                <span class="comment"># 文本中有utf和别的混合编码，</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:                   <span class="comment"># 这里仍然可能出现invalid start byte 只有一两行，跳过即可</span></span><br><span class="line">            print(str(e))</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> line[<span class="number">0</span>:<span class="number">11</span>] == match <span class="keyword">and</span> len(line) &gt; <span class="number">300</span>:        <span class="comment"># 比较麻烦的地方就是从html里匹配出图片url了，</span></span><br><span class="line">            url_l = re.findall(pattern, line)               <span class="comment"># 需要一点时间和经验</span></span><br><span class="line">            <span class="keyword">if</span> len(url_l) == <span class="number">0</span>:</span><br><span class="line">                end_indexing += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> u <span class="keyword">in</span> url_l:</span><br><span class="line">                u = u.replace(<span class="string">'amp;'</span>, <span class="string">''</span>)</span><br><span class="line">                filename = u.split(<span class="string">'/'</span>)[<span class="number">-1</span>].split(<span class="string">'?'</span>)[<span class="number">0</span>] + <span class="string">'.jpg'</span></span><br><span class="line">                pic_path = os.path.join(keyword_path, filename)</span><br><span class="line">                <span class="keyword">if</span> os.path.isfile(pic_path):</span><br><span class="line">                    print(filename + <span class="string">' existed. skip'</span>)</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> count &gt;= <span class="number">30</span> <span class="keyword">and</span> count % <span class="number">30</span> == <span class="number">0</span>:           <span class="comment"># 只有一个ip，避免触发反爬</span></span><br><span class="line">						        print(<span class="string">"sleeping ..."</span>)</span><br><span class="line">						        time.sleep(<span class="number">15</span>)</span><br><span class="line"></span><br><span class="line">                print(<span class="string">'getting '</span>+filename+<span class="string">' ...'</span>)</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    pic = requests.get(u, headers=headers_2, verify=<span class="literal">False</span>, timeout=<span class="number">40</span>)   <span class="comment"># 不强制ssl</span></span><br><span class="line">                <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                    print(e)</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">with</span> open(pic_path, <span class="string">'wb'</span>) <span class="keyword">as</span> fp_2:</span><br><span class="line">                    fp_2.write(pic.content)</span><br><span class="line">                    end_indexing = <span class="number">0</span></span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    start_index += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p>还是一般图站爬虫的老一套，强制ssl、没有结果就中断等等，主要复习点是由于需要在一个大行内匹配多个对象，因此正则需要用?关键词来做最小匹配。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/123rf-spider/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/16/123rf-spider/" class="post-title-link" itemprop="url">图片素材网站123rf.com爬虫</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-16 12:01:14" itemprop="dateCreated datePublished" datetime="2019-12-16T12:01:14+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-18 16:01:28" itemprop="dateModified" datetime="2019-12-18T16:01:28+08:00">2019-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">图片爬虫</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>从百度谷歌必应爬来的图片已经不能满足需求了，所以被迫找专门的图片素材网站来获取需要的图片数据。<br>国内的图片站并不多，国外的倒是百花齐放，大多数估计是设计师上传原图收费用的，果然国外版权意识就是强</p>
+<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>话不多说直接F12搜索抓包，可以看到接口:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.123rf.com/stock-photo/gun.html?oriSearch=gun&amp;start=100&amp;sti=mo9zjoufp5w90e</span><br></pre></td></tr></table></figure>
+
+<p>参数有一个搜索关键词和起始位置，后面那个参数估计是时间？每次都在变，并且去掉也不会有影响，所以直接忽略。<br>通常这种图站图片url都是直接内嵌在html里，查看源页面在里面找图片url就好了。查找关键词无非是img jpg png之类的。<br>翻一下可以很快找到。请求头更简单，随便写个ua就过了，估计ua都不用。<br>所以思路就是请求接口，用正则匹配图片url。(就还蛮弱智的</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>一个页面还是挺大的，匹配的时候还是先找关键词缩小匹配范围，减少正则匹配时间。由于匹配关键词里有双引号，正则里<br>面要通过右斜杠\来转义双引号</p>
+<p>顺带复习一下正则：</p>
+<table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">匹配对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">字符关键词，匹配除\n外的任意字符一次</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">数量关键词，用于字符关键词之后，匹配前一个字符关键词0或无数次</td>
+</tr>
+<tr>
+<td align="center">()</td>
+<td align="center">逻辑关键词，分组，这里可以用来表示实际取出来的图片url, 通常配合findall使用，返回一个结果list</td>
+</tr>
+</tbody></table>
+<p>一个图片url部分形如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"https://us.123rf.com/450wm/moovstock/moovstock1706/moovstock170601226/80800333-waving-flag-with-starbucks-logo-against-sky-and-clouds-editorial-3d-rendering.jpg?ver=6"</span> <span class="attr">class</span>=<span class="string">"imgSrcClass"</span></span></span><br></pre></td></tr></table></figure>
+
+
+<p>很明显我们要构造的正则形如： xxxximg src=”图片url” class=xxxx</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line"></span><br><span class="line">urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  <span class="comment"># 老规矩关闭ssl报警</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">match = <span class="string">'img src="http'</span>                               <span class="comment"># 定位需要正则匹配的地方</span></span><br><span class="line">pattern = <span class="string">".*img src=\"(.*)\" class="</span>      </span><br><span class="line">pattern = re.compile(pattern)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r'.\\123rf_html.log'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> fp:       <span class="comment"># 保存网页到文件</span></span><br><span class="line">    fp.write(rep.content)</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r'.\\123rf_html.log'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> fp:      <span class="comment"># 读取时出现invalid start byte 可以先以二进制读出来，</span></span><br><span class="line">    line_lst = fp.readlines()                     <span class="comment"># 后面再跳过编码错误的行</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines_lst:</span><br><span class="line">    <span class="keyword">try</span>:                                          <span class="comment"># byte——&gt;str，跳过invalid start byte的行</span></span><br><span class="line">        line = str(line, <span class="string">'utf-8'</span>)       </span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">if</span> match <span class="keyword">in</span> line:</span><br><span class="line">        url_lst = pattern.findall(line)            </span><br><span class="line">        <span class="keyword">if</span> len(url_lst)==<span class="number">0</span>:                       <span class="comment"># 没匹配到跳过</span></span><br><span class="line">            contiue</span><br><span class="line">        pic_url = url_lst[<span class="number">0</span>]                      <span class="comment"># 这里每行只有一个匹配</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p>1.读取html文本可能出现invalid start byte,处理方式是通过二进制读出来，再转str，跳过编码错误的行，因为这里每一行内容少，编码错误行也不多，不影响结果，因此可以跳过<br>2.下载图片时不强制使用ssl                    pic = requests.get(url, verify=False, timeout=40)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/FileZilla%E7%9A%84%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/20/FileZilla%E7%9A%84%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">FileZilla的导出文件处理脚本</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-05-20 17:49:37 / Modified: 20:18:32" itemprop="dateCreated datePublished" datetime="2019-05-20T17:49:37+08:00">2019-05-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>花了几天从Filezilla中读取了服务器中要下载的文件路径<br>导出之后才知道只需要其中一部分格式的文件，总不能再跑一遍，filezilla中<br>又没法批量处理导入文本，只好自己上了。ps:filezilla可以设置过滤器只保留需要的文件，但那是在下载之前才有效。</p>
+<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>filezilla导出文件是xml格式，无非是找个xml库解析或者粗暴的<br>当成一般文本处理，xml解析就不用说了，主要是第二种。看一下导出文件格式，<br>每个要下载的文件包含多个子属性。只要匹配到文件名并将属于同一文件的其他属性行丢弃就行。又是一个遍历中的删除问题。由于是xml格式，因此很多属性关键字是一样的，因此不能简单的将每一行放入列表中通过列表值索引(list.index)，这样会索引到前面的相同的值。所以想法是生成一个key为索引值，value为字符串的字典。<br>遍历时维护一个临时列表，每次遇到关键字就将该行及后几行放入列表中。这样遍历<br>下一行时检查该行是否在临时列表中，在就continue。能极大的提高处理效率。这个列表在每次匹配到关键字时重置和bu’zai’，避免该列表太大拖慢速度，因为要处理的是几百兆的文本。(python list检索复杂度是O(n))。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"> /usr/bin/env python</span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> my_code <span class="keyword">import</span> ElementTree <span class="keyword">as</span> ET</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    处理Filezilla下载导出文件.</span></span><br><span class="line"><span class="string">    下载ftp上大量的复杂目录时，读取远程目录耗时不小</span></span><br><span class="line"><span class="string">    最好的方法是下载时就通过Filezilla自带的过滤器过滤掉不需要的文件。</span></span><br><span class="line"><span class="string">    也可以通过处理导出文件来跳过不需要的文件。</span></span><br><span class="line"><span class="string">    *直接文本处理速度比解析xml要快</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意filezilla对导出文件编码有严格要求，有中文必须设置为utf-8格式,否则修改后导入将无法显示</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_xml_style</span><span class="params">(orignal_path, final_path)</span>:</span></span><br><span class="line">    tree = ET.parse(orignal_path)</span><br><span class="line">    root = tree.getroot()</span><br><span class="line">    <span class="keyword">for</span> queue <span class="keyword">in</span> root.findall(<span class="string">'Queue'</span>):</span><br><span class="line">        <span class="keyword">for</span> server <span class="keyword">in</span> queue.findall(<span class="string">'Server'</span>):</span><br><span class="line">            <span class="keyword">for</span> element <span class="keyword">in</span> server.findall(<span class="string">'File'</span>):</span><br><span class="line">                <span class="keyword">if</span> <span class="string">".mp4"</span> <span class="keyword">in</span> str(element[<span class="number">0</span>].text) <span class="keyword">or</span> <span class="string">".avi"</span> <span class="keyword">in</span> str(element[<span class="number">0</span>].text):</span><br><span class="line">                    server.remove(element)</span><br><span class="line">    tree.write(final_path, encoding=<span class="string">"UTF-8"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_txt_style</span><span class="params">(original_path, final_path)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(original_path, <span class="string">'r'</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        lines = fp.readlines()</span><br><span class="line"></span><br><span class="line">    a = <span class="number">0</span></span><br><span class="line">    lst_2 = []</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        lst_2.append(a)</span><br><span class="line">        a += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    tmp = []</span><br><span class="line">    dic = OrderedDict(zip(lst_2, lines))  <span class="comment"># 通过计数器索引行数，实现在遍历时跨行操作，</span></span><br><span class="line">                                          <span class="comment"># 不用list是因为文本中有大量重复行，通过list内容索引会索引到相同内容但不同的行</span></span><br><span class="line">    new_lst = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(final_path, <span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> dic.items():</span><br><span class="line">            <span class="keyword">if</span> key == int(len(lst_2))<span class="number">-1</span> <span class="keyword">or</span> key <span class="keyword">in</span> tmp:    <span class="comment"># 提速的关键是跳过关键字后面行的处理</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">"&lt;File&gt;"</span> <span class="keyword">in</span> value <span class="keyword">and</span> (<span class="string">".mp4"</span> <span class="keyword">in</span> dic[key+<span class="number">1</span>] <span class="keyword">or</span> <span class="string">".avi"</span> <span class="keyword">in</span> dic[key+<span class="number">1</span>]):</span><br><span class="line">                tmp = []</span><br><span class="line">                <span class="keyword">if</span> <span class="string">"&lt;ErrorCount&gt;"</span> <span class="keyword">in</span> dic[key+<span class="number">6</span>]:</span><br><span class="line">                    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">9</span>):</span><br><span class="line">                        tmp.append(key+i)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">8</span>):</span><br><span class="line">                        tmp.append(key+i)</span><br><span class="line">            <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> tmp:</span><br><span class="line">                new_lst.append(value)</span><br><span class="line">                tmp = []</span><br><span class="line">        new_lst.append(dic[len(lst_2)<span class="number">-1</span>])</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> new_lst:</span><br><span class="line">            fp.write(line)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    filter_txt_style(<span class="string">r"old.xml"</span>, <span class="string">r"new.xml"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结和遇到的坑"><a href="#总结和遇到的坑" class="headerlink" title="总结和遇到的坑"></a>总结和遇到的坑</h1><p>1.遍历中的跨元素操作，需要根据情况选择字典还是列表，尤其是涉及到列表的<br>遍历时删除操作(会改变list索引)，比较稳妥的方法是将需要的数据拿出来放到单独的list中。<br>2.遍历时跨索引值进行操作和索引(i+1)需要考虑越界问题。<br>3.filezilla导入只认utf-8编码，要么在写入新xml时就指定，要么手动设置为utf-8<br>否则会显示导入成功但是不会看见任何导入数据.<br>4.vim中设置文本编码格式:set fileencoding=utf-8     </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84WAN%E5%92%8CLAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/05/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84WAN%E5%92%8CLAN/" class="post-title-link" itemprop="url">路由器的WAN和LAN</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-05 19:33:15" itemprop="dateCreated datePublished" datetime="2018-12-05T19:33:15+08:00">2018-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-12-06 14:09:18" itemprop="dateModified" datetime="2018-12-06T14:09:18+08:00">2018-12-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>某天发现一台服务器（172.16.x.x）无法登陆，通过ping检查网络联通时发现<br>没有得到服务器回复，回复的地址是另一个ip（172.16.x.x）。便用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tracert ip  (windows)</span><br><span class="line">traceroute ip  (linux)</span><br></pre></td></tr></table></figure>
+<p>检查一下数据包怎么走，结果发现这个地址就在我的下一跳，这不就是路由器？（当前我连接的是wifi）（192.168.x.x）<br>但一看这地址，是内网地址，但不是我当前路由器所在的内网。于是抽风了想通过arp看一下这货的的mac地址<br>（首先需要ping来获取mac地址）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure>
+<p>发现地址表里没有这个地址，这才想起<strong><em>arp协议是二层协议，针对局域网，在局域网内，数据转发是通过MAC表进行的</em></strong>。<br>因而arp -a只能显示当前局域网的arp表。而我要找的服务器地址相对我来说是个外网地址。<br>所以这玩意到底是什么，上nmap</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -Pn -A ip</span><br></pre></td></tr></table></figure>
+<p>nmap给出的猜测结果是WAP，说明大概率是个无线接入点</p>
+<p>没辙了，百度一下。</p>
+<p><strong>原来路由器确实有两个地址，内网（相对自身）和外网地址，分别对应路由器的LAN口和WAN口，即路由器内接入的设备通过<br>LAN来组成一个局域网，路由器的内网地址（如这里的192.168.x.x）为内网提供服务，而WAN口接入运营商提供的猫来连接互联<br>网，或者通过别的设备接入一个新的局域网，此时WAN口就是为出内网而服务的，WAN口的地址即为另一个局域网内的地址<br>（如这里的172.16.x.x）。</strong> 即我对172网络的服务器的ping操作得到的是路由器出口地址的回复。</p>
+<p>然后我检查了一下服务器的网线..发现原来是网线松了。此时为了验证刚才百度的结果，我再次对服务器:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tracert ip</span><br></pre></td></tr></table></figure>
+<p>服务器在172网络，按说tracert后出口地址应该是WAN口才对，但很奇怪，我的下一跳仍然是路由器内网地址192<br>接着我试着tracert 谷歌的DNS服务器8.8.8.8，发现下一跳也还是路由器内网地址。</p>
+<p>那么如何验证这个猜想呢，只好远程一下服务器，因服务器与路由器的WAN口在同一个网段内，通过服务器pingWAN操作，然后查一下服务器的apr缓存表就知道了。<br>结果WAN口MAC地址和LAN口的MAC地址一个是5a一个是5b，即它们是同一个路由器的两个不同网卡</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/" class="post-title-link" itemprop="url">记一次服务器ssh登陆修复</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-03 20:02:50" itemprop="dateCreated datePublished" datetime="2018-12-03T20:02:50+08:00">2018-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-18 16:20:47" itemprop="dateModified" datetime="2019-12-18T16:20:47+08:00">2019-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>1.服务器远程登陆报错: connection refused</p>
+<h1 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h1><p>1.首先考虑网络问题，发现可以ping通,排除网络问题<br>2.因为有人在无法登陆之前已经登陆了，尝试重启服务器,重启之后问题还在。<br>3.重启无效又没法登陆，只能跑去机房上屏幕调试了。</p>
+<p>生平第一次进机房处理毛病，插上就是图形登陆界面，输入密码发现登陆之后会黑屏，然后回到登陆界面。<br>我日，难道是系统炸了。既然图形界面上不了，那就上终端。<code>ctrl alt f1</code> 进tty。<br>tty能进，那就简单了，尝试检查一下ssh服务是不是开着：</p>
+<p><code>netstat -l | grep ssh</code></p>
+<p>发现没有ssh服务，那就重启服务：</p>
+<p><code>sudo sevice sshd restart</code></p>
+<p>报错：<code>Job for ssh.service failed because the control process exited with error code</code><br>从这个报错来看ssh的进程应该还在才对，但是top和端口都找不到相关服务。没辙了，直接百度这个错误吧。</p>
+<p>然后找到了这个老哥的blog：</p>
+<p><a href="https://blog.csdn.net/woailyoo0000/article/details/79782986" target="_blank" rel="noopener">csdn</a></p>
+<p>发现一条命令：</p>
+<p><code>/usr/sbin/sshd -T</code></p>
+<p>没查过这个命令，但是估计-T应该是test吧。测试配置文件<br>运行一下，报错了，配置文件错误，问题找到了，和上面这个老哥一样</p>
+<p>但是我不懂ssh的配置语法，该怎么改呢<br>再次百度这个错误</p>
+<p><a href="http://www.cnblogs.com/miaodi/p/6718950.html" target="_blank" rel="noopener">cnblog</a></p>
+<p>估计是ssh更新或者某个人把配置文件给改错了，</p>
+<p>错误配置：<br><code>PermitRootLogin prohibit-password yes</code></p>
+<p>正确配置：<br><code>PermitRootLogin yes</code></p>
+<p>然后重启ssh服务</p>
+<p><code>sudo service ssh restart</code></p>
+<p>大功告成，可以登陆了。</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>1.善用搜索引擎，直接搜索<strong>错误信息</strong><br>2.这之后发现在图形界面仍然无法登陆，估计是根本没有安装图形桌面（但登陆界面是图形化的）<br>或者管理员做了某些限制吧，这个奇怪的现象把我解决问题的想法打乱了一点，因为ssh无法登陆<br>应该不会影响直接登陆才对。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">python文本读写及初步处理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-11-15 17:40:21" itemprop="dateCreated datePublished" datetime="2018-11-15T17:40:21+08:00">2018-11-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-05-21 09:32:10" itemprop="dateModified" datetime="2019-05-21T09:32:10+08:00">2019-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="打开文本"><a href="#打开文本" class="headerlink" title="打开文本"></a>打开文本</h1><p>pyhon打开文本主要有两种方式，即<code>open</code>和<code>with open</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp=open(path, <span class="string">'r'</span>)</span><br><span class="line">...</span><br><span class="line">fp.close()               <span class="comment">#记得关闭句柄</span></span><br></pre></td></tr></table></figure>
+<p>文件使用后必须关闭，因为文件对象会占用系统资源，并且系统同一时间能打开的文件是有限的<br>由于，文件读写时可能产生IOError，一旦出错，fp.close()将不会被调用，系统资源无法被释放<br>，因此我们应使用<code>try finally</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    fp = open(path, <span class="string">'r'</span>) </span><br><span class="line">    print(fp.read())</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="keyword">if</span> fp:</span><br><span class="line">        fp.close()</span><br></pre></td></tr></table></figure>
+<p>当然直接用<code>with open</code>是坠吼的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(path, <span class="string">'r'</span>) <span class="keyword">as</span> fp:   <span class="comment">#自动关闭句柄</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="打开模式"><a href="#打开模式" class="headerlink" title="打开模式"></a>打开模式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fp=open(path, <span class="string">'r'</span>)    <span class="comment">#只读</span></span><br><span class="line">fp=open(path, <span class="string">'w'</span>)    <span class="comment">#写(重写整个文件，若不存在则创建)</span></span><br><span class="line">fp=open(path, <span class="string">'a'</span>)    <span class="comment">#附加(在源文本基础上添加)</span></span><br><span class="line">fp=open(path, <span class="string">'b'</span>)    <span class="comment">#以二进制方式打开，通常可以解决一些编码问题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这些组合也可以叠加</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="读取文本"><a href="#读取文本" class="headerlink" title="读取文本"></a>读取文本</h1><p>python读取文本主要是三个方法<code>read()</code>,<code>readline()</code>, <code>readlines()</code></p>
+<p>read()方法将文本内容一次性全部读入字符串中，通常速度最快，但如果文本过大，<br>则会占用太多的内存。当然也可以通过限制读取字节数来限制读取量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.read()</span><br></pre></td></tr></table></figure>
+<p>readline()方法逐行读取文本，速度较慢</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    line = fp.readline()</span><br><span class="line">    <span class="keyword">while</span> line:</span><br><span class="line">        <span class="keyword">print</span> line</span><br><span class="line">        line = fp.readline()</span><br></pre></td></tr></table></figure>
+<p>readlines()方法会一次读取全部文本，并将结果放入list中,速度较快</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.readliens()</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，这三种方法实际上都将文本末尾的换行’\n’读取进来了，因此需要<br>去掉行尾的’\n’。</p>
+<h1 id="行处理"><a href="#行处理" class="headerlink" title="行处理"></a>行处理</h1><h2 id="去掉字符串前后的字符"><a href="#去掉字符串前后的字符" class="headerlink" title="去掉字符串前后的字符"></a>去掉字符串前后的字符</h2><p>去掉字符串前后的字符，可以通过<code>rstrip</code>,<code>strip</code>,<code>lstrip</code>来实现<br>rstrip()方法删除字符串末尾的指定字符，默认为空格，(rstrip中的r即右)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.rstrip()</span><br><span class="line">str.rstrip(<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
+<p>lstrip()方法删除字符串开头的指定字符(l即左边)</p>
+<p>strip()方法删除字符串首尾的指定字符</p>
+<h2 id="字符串分割"><a href="#字符串分割" class="headerlink" title="字符串分割"></a>字符串分割</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">os.path.split(str)    <span class="comment"># 分割文件名和路径名，结果为两个元素的list</span></span><br><span class="line">str.split(<span class="string">"\")        # 将str按照字符"</span>\<span class="string">"来分割，注意这是两个不同的方法</span></span><br></pre></td></tr></table></figure>
+<p>python中字符串本质其实是一个list,通过枚举的方法可以将字符串分成单个字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> str:</span><br><span class="line">    list.append(str)      <span class="comment"># 这样就将字符串str中的字符分别放入list中了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串分割为list后对list进行处理"><a href="#字符串分割为list后对list进行处理" class="headerlink" title="字符串分割为list后对list进行处理"></a>字符串分割为list后对list进行处理</h2><p>通常在操作目录或者别的字符串时需要去掉某些字符，通过分割字符串为列表之后，<br>可以直接通过list自带的分割来抛弃list中的某些部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list[<span class="number">1</span>:]     <span class="comment"># 注意区间是前闭后开的，取第二个元素到最后一个元素</span></span><br><span class="line">list[:<span class="number">-1</span>]    <span class="comment"># -1表示倒数第一个元素，但区间是前闭后开的，因而取第一个元素和倒数第二个元素</span></span><br></pre></td></tr></table></figure>
+<h2 id="list重新转化为字符串"><a href="#list重新转化为字符串" class="headerlink" title="list重新转化为字符串"></a>list重新转化为字符串</h2><p>处理完list之后，我们需要将list再次组合成字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_str = <span class="string">''</span>.join(lst)      <span class="comment"># 通过空字符串连接list元素，即直接拼接成新的字符串</span></span><br><span class="line">new_str = os.sep.join(lst)    <span class="comment"># 连接成目录</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="写入文本"><a href="#写入文本" class="headerlink" title="写入文本"></a>写入文本</h1><p>两种方式，一种即正常的write()方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(path, <span class="string">'w'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">'123'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>或者通过修改标准输出到文件来写入文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">origin = sys.stdout</span><br><span class="line">fp = open(path, <span class="string">'w'</span>)</span><br><span class="line">sys.stdout = fp</span><br><span class="line"></span><br><span class="line">sys.stdout = origin</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
+<p>明显第二种方式更加优雅，且可以很方便的从输出到屏幕到写入文件进行转换</p>
+<p>转载和引用：<br><a href="https://www.cnblogs.com/zywscq/p/5441145.html" target="_blank" rel="noopener">cnblog</a><br><a href="https://www.cnblogs.com/Yolandera/p/7257595.html" target="_blank" rel="noopener">cnblog</a></p>
+<h1 id="中文处理"><a href="#中文处理" class="headerlink" title="中文处理"></a>中文处理</h1><h2 id="ascii编码转换为utf-8"><a href="#ascii编码转换为utf-8" class="headerlink" title="ascii编码转换为utf-8"></a>ascii编码转换为utf-8</h2><p>python2.x中默认编码方式为ascii，若文本出现非ascii编码字符会报错,因而需要设置编码格式</p>
+<h3 id="python2-x"><a href="#python2-x" class="headerlink" title="python2.x"></a>python2.x</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#coding:utf-8                              # 代码编辑中可出现中文</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">reload(sys)                               </span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)           <span class="comment"># 编码转换</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="python3-x"><a href="#python3-x" class="headerlink" title="python3.x"></a>python3.x</h3><p>python3.x中不需要指定编码格式即可处理utf-8,但如果仍要转换格式，也可以</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#coding:utf-8                              # 代码编辑中可出现中文</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line"></span><br><span class="line">importlib.reload(sys)                      <span class="comment"># 编码转换</span></span><br></pre></td></tr></table></figure>
+<h2 id="中文路径及文件名"><a href="#中文路径及文件名" class="headerlink" title="中文路径及文件名"></a>中文路径及文件名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path = <span class="string">r'D:\测试路径\测试文件.txt'</span>           <span class="comment"># r''用于处理python中的转义符'\'，若不使用r''则需要每个转义符'\'前再次转义即'\\'</span></span><br><span class="line">path = <span class="string">'D:\\测试路径\\测试文件.txt'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="读取中文文本内容"><a href="#读取中文文本内容" class="headerlink" title="读取中文文本内容"></a>读取中文文本内容</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># py3</span></span><br><span class="line"><span class="keyword">with</span> open(test.txt, <span class="string">'r'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.readlines()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/%E7%A3%81%E7%9B%98%E5%92%8Clinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/05/%E7%A3%81%E7%9B%98%E5%92%8Clinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">磁盘和linux文件系统</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-11-05 19:23:46" itemprop="dateCreated datePublished" datetime="2018-11-05T19:23:46+08:00">2018-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-11-06 21:04:29" itemprop="dateModified" datetime="2018-11-06T21:04:29+08:00">2018-11-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="关于分区和文件系统"><a href="#关于分区和文件系统" class="headerlink" title="关于分区和文件系统"></a>关于分区和文件系统</h1><h2 id="为何分区"><a href="#为何分区" class="headerlink" title="为何分区"></a>为何分区</h2><p>1.方便系统管理<br>2.大大减少寻找文件的花销</p>
+<h2 id="硬盘分区的概念"><a href="#硬盘分区的概念" class="headerlink" title="硬盘分区的概念"></a>硬盘分区的概念</h2><p>信息是存储在硬盘上的，计算机中存放信息的主要的存储设备就是硬盘，但是硬盘不能直接使用，<br>必须对硬盘进行分割，分割成的一块一块的区域，区域就是磁盘分区。在传统的磁盘管理中，<br>将一个硬盘分为两大类分区：主分区和扩展分区。主分区是能够安装操作系统，能够进行计算机启动的分区，<br>这样的分区可以直接格式化，然后安装系统。而通过在扩展分区中在划分逻辑分区对系统分区进行扩展。<br>实际上所有的逻辑分区都是在一个分区类，只是逻辑上分开，这也是叫逻辑分区的原因。<br>但对用户来说一切都是透明了，我们看起来系统中有很多分区。下图能够清楚地了解到这个结构</p>
+<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><p><strong>将一个目录作为进入点，通过将磁盘分区挂载到该目录上，从该目录来进入、访问磁盘分区的数据</strong></p>
+<p>硬盘系统分区结构：</p>
+<p>Linux系统分区结构：</p>
+<p>在Linux中，磁盘分区和目录有以下的关系：<br>1.任何一个分区都必须挂载到某个目录上<br>2.目录是逻辑上的区分，分区是物理上的区分<br>3.磁盘和分区都必须挂载到目录树中的某个具体目录才能进行读写操作<br>4.根目录是所有Linux文件和目录所在的地方，需要挂载一个磁盘分区。</p>
+<h2 id="分区建议"><a href="#分区建议" class="headerlink" title="分区建议"></a>分区建议</h2><p>在安装系统的过程中，建议分别给 /、/boot、swap创建单独的分区。</p>
+<p>swap：可以理解为虚拟内存。一般情况下，真实内存如果小于4GB，则分配给swap的空间为真实内存的两倍。<br>        如果超过4GB，则分配同等大小的空间。<br>/：系统根目录。一般在主分区下，当然也可以分到扩展分区的逻辑分区中。<br>/boot：将它挂载到单独的分区中，一般200MB即可。主要用于系统启动。避免根目录所在的分区被塞满导致系统无法启动</p>
+<h1 id="查看空间大小"><a href="#查看空间大小" class="headerlink" title="查看空间大小"></a>查看空间大小</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df -h  查看Linux文件系统的使用情况</span><br><span class="line">du -sh 查看具体某个目录的使用情况</span><br></pre></td></tr></table></figure>
+
+<p>trick:存放数量级很大的文件，大小上T，数量在百万甚至千万级别的数据，可以直接固定几个分区，<br>这样每次需要查看这些数据的大小时，可以直接df -h 。用du -sh将花费很大的时间来计算数据大小。</p>
+<h1 id="关于”文件大小”和”占用空间”"><a href="#关于”文件大小”和”占用空间”" class="headerlink" title="关于”文件大小”和”占用空间”"></a>关于”文件大小”和”占用空间”</h1><p>首先，文件的大小和其所占用的空间存在一定的差异是肯定的，这个现象起始的原因就是因为系统的文件和索引<br>为了方面系统更便捷的管理文件，操作系统使用文件系统对各种文件进行管理（文件系统就是我们经常说的FAT32和NTFS等）<br>文件系统将硬盘分为很多个“簇”。</p>
+<p>以FAT32文件系统为例，fat32文件系统的簇大小是4KB。当我们要存储一个1KB的文件，那么它将占用4KB的空间，<br>要存储2KB的文件，所占用的文件大小也是4KB，而要存储2个2KB大小的文件时，其所占用的空间就为8KB。以此类推。<br>所以，当我们存储非常多的小文件的时候，其所占用的空间就越大，但很可能其实际的文件大小却很小，也就是这个道理。<br>同理，一个文件越大，其占用却没有使用的空间也就相对的小。</p>
+<h1 id="如何知道当前计算机使用了几个硬盘，这些硬盘如何分区？"><a href="#如何知道当前计算机使用了几个硬盘，这些硬盘如何分区？" class="headerlink" title="如何知道当前计算机使用了几个硬盘，这些硬盘如何分区？"></a>如何知道当前计算机使用了几个硬盘，这些硬盘如何分区？</h1><p>通过df查看磁盘使用情况</p>
+<p>例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">文件系统                 容量       已用       可用    已用% 挂载点 </span><br><span class="line">/dev/sda3              4956316   3565088   1135396 76% / </span><br><span class="line">tmpfs                   241320         12    241308   1%   /dev/shm </span><br><span class="line">/dev/sda6              4806904   2523708   2039012 56% /media/disk </span><br><span class="line">/dev/sda1              4956284   3529796   1170656 76% /media/_ </span><br><span class="line">/dev/sda5              4845056   2581484   2019388 57% /media/disk-1</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>/dev/    是所有设备文件所在的目录<br>xy       设备类型，通常是hd(IDE硬盘)或者sd(SCSI硬盘)<br>Z        表示所在硬盘标号，如/hda  /sda<br>N        分区号</p>
+<p>Linux的分区使用xyZN格式，其中xy表示硬盘类型，<br>如上面/dev/sda3中,dev即device是所有设备文件所在目录的目录名字，sd表示该硬盘的类型是SCSI硬盘。<br>Z表示硬盘序号，第一块硬盘即sda表示硬盘a，N表示分区号，如sda3表示一块SCSI类型的硬盘a的分区3<br>可以看上述例子只有一块硬盘a</p>
+<p>转载和参考：<br><a href="https://blog.csdn.net/gui951753/article/details/79032190" target="_blank" rel="noopener">csdn</a><br><a href="http://www.2cto.com/os/201203/123035.html" target="_blank" rel="noopener">personal blog</a><br><a href="https://www.cnblogs.com/oxspirt/p/6106055.html" target="_blank" rel="noopener">csdn</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Quin"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Quin</p>
+  <div class="site-description" itemprop="description">"Just for fun"</div>
 </div>
-<a class="" id="rocket" ></a>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
 
     </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Quin</span>
 </div>
-<div class="acParent"></div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
-
-<script src="/js/script.js?v=1.0.1" ></script>
-<script>
-    var img_resize = 'default';
-    /*作者、标签的自动补全*/
-    $(function () {
-        $('.search').AutoComplete({
-            'data': ['#123rf.com','#爬虫','#spider','#Filezilla','#Vim乱码','#Vim配置','#vim','#gettyimages','#c++','#指针','#百合网','#baihe','#服务器','#Linux文件系统','#linux','#SSH','#路由器WAN,LAN','#读取文件','#OpenCV',],
-            'itemHeight': 20,
-            'width': 418
-        }).AutoComplete('show');
-    })
-    function initArticle() {
-        /*渲染对应的表格样式*/
-        
-            $(".post .pjax table").addClass("green_title");
-        
-
-        /*渲染打赏样式*/
-        
-
-        /*高亮代码块行号*/
-        
-        $('pre code').each(function(){
-            var lines = $(this).text().split('\n').length - 1, widther='';
-            if (lines>99) {
-                widther = 'widther'
-            }
-            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
-            $(this).addClass('has-numbering ' + widther)
-                    .parent()
-                    .append($numbering);
-            for(var i=1;i<=lines;i++){
-                $numbering.append($('<li/>').text(i));
-            }
-        });
-        
-
-        /*访问数量*/
-        
-        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
-        
-
-        /*代码高亮，行号对齐*/
-        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
-        
-        
-    }
-
-    /*打赏页面隐藏与展示*/
-    
-
-</script>
-
-<!--加入行号的高亮代码块样式-->
-
-<style>
-    pre{
-        position: relative;
-        margin-bottom: 24px;
-        border-radius: 10px;
-        border: 1px solid #e2dede;
-        background: #FFF;
-        overflow: hidden;
-    }
-    code.has-numbering{
-        margin-left: 30px;
-    }
-    code.has-numbering.widther{
-        margin-left: 35px;
-    }
-    .pre-numbering{
-        margin: 0px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        padding: 0.5em 3px 0.7em 5px;
-        border-right: 1px solid #C3CCD0;
-        text-align: right;
-        color: #AAA;
-        background-color: #fafafa;
-    }
-    .pre-numbering.widther {
-        width: 35px;
-    }
-</style>
-
-<!--自定义样式设置-->
-<style>
-    
-    
-    .nav {
-        width: 542px;
-    }
-    .nav.fullscreen {
-        margin-left: -542px;
-    }
-    .nav-left {
-        width: 120px;
-    }
-    
-    
-    @media screen and (max-width: 1468px) {
-        .nav {
-            width: 492px;
-        }
-        .nav.fullscreen {
-            margin-left: -492px;
-        }
-        .nav-left {
-            width: 100px;
-        }
-    }
-    
-    
-    @media screen and (max-width: 1024px) {
-        .nav {
-            width: 492px;
-            margin-left: -492px
-        }
-        .nav.fullscreen {
-            margin-left: 0;
-        }
-        .nav .hide-list.fullscreen {
-            left: 492px
-        }
-    }
-    
-    @media screen and (max-width: 426px) {
-        .nav {
-            width: 100%;
-        }
-        .nav-left {
-            width: 100%;
-        }
-    }
-    
-    
-    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
-        color: #383636;
-    }
-    
-    
-    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
-        color: #5e5e5f;
-    }
-    
-    
-    .nav-right nav a.hover, #local-search-result a.hover{
-        background-color: #e2e0e0;
-    }
-    
-    
-
-    /*列表样式*/
-    
-    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
-        border: #e2dede solid 1px;
-        border-radius: 10px;
-        padding: 10px 32px 10px 56px;
-    }
-    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    
-
-    /* 背景图样式 */
-    
-    
-
-
-    /*引用块样式*/
-    
-
-    /*文章列表背景图*/
-    
-    .nav-right:before {
-        content: ' ';
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.3;
-        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
-        background-repeat: no-repeat;
-        background-position: 50% 0;
-        -ms-background-size: cover;
-        -o-background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
-        background-size: cover;
-    }
-    
-
-    
-</style>
-
-
-
-
-
-
-
 </html>
