@@ -70,7 +70,10 @@
 <p>运行结果:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">0113FED0 0113FED4</span><br><span class="line">0113FEC7 0113FEC8</span><br><span class="line">0113FEB8 0113FEBA</span><br><span class="line">0113FEAC 0113FEB0</span><br></pre></td></tr></table></figure>
 <ul>
-<li>可以看到不同类型的指针+1所增加的字节是不同的，指针的加减和其指向的类型相关，加减都是根据其大小作为基本的运算单位来计算的。如对int * 来说+1会使其增加4byte，对char * 来说+1会使其增加1byte，和上面相同，void * 不支持加减运算，因为其指向的大小未知。</li>
+<li><p>指针与整数加减：可以看到不同类型的指针+1所增加的字节是不同的，指针的加减和其指向的类型相关，加减都是根据其大小作为基本的运算单位来计算的。如对int * 来说+1会使其增加4byte，对char * 来说+1会使其增加1byte，和上面相同，void * 不支持加减运算，因为其指向的大小未知。</p>
+</li>
+<li><p>指针之间加减：不同类型的指针不能加减。相同类型的指针不能相加，因为没有意义，因此编译时一般会报错。相同类型的指针相减结果是两个地址之间该类型的元素个数，如p1-p2=p1-p2/sizeof(int)</p>
+</li>
 </ul>
 <h2 id="数组、字符串、字符数组和指针数组"><a href="#数组、字符串、字符数组和指针数组" class="headerlink" title="数组、字符串、字符数组和指针数组"></a>数组、字符串、字符数组和指针数组</h2><h3 id="关于格式化输出函数printf"><a href="#关于格式化输出函数printf" class="headerlink" title="关于格式化输出函数printf"></a>关于格式化输出函数printf</h3><ul>
 <li>printf的输入输出和其标志符相关，为了更好的理解指针、字符串和数组，需要理解这个函数</li>
