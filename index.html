@@ -1001,7 +1001,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-05-21 09:32:10" itemprop="dateModified" datetime="2019-05-21T09:32:10+08:00">2019-05-21</time>
+                <time title="Modified: 2020-07-10 22:39:30" itemprop="dateModified" datetime="2020-07-10T22:39:30+08:00">2020-07-10</time>
               </span>
 
           
@@ -1054,7 +1054,9 @@
 <h1 id="中文处理"><a href="#中文处理" class="headerlink" title="中文处理"></a>中文处理</h1><h2 id="ascii编码转换为utf-8"><a href="#ascii编码转换为utf-8" class="headerlink" title="ascii编码转换为utf-8"></a>ascii编码转换为utf-8</h2><p>python2.x中默认编码方式为ascii，若文本出现非ascii编码字符会报错,因而需要设置编码格式</p>
 <h3 id="python2-x"><a href="#python2-x" class="headerlink" title="python2.x"></a>python2.x</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#coding:utf-8                              # 代码编辑中可出现中文</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">reload(sys)                               </span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)           <span class="comment"># 编码转换</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="python3-x"><a href="#python3-x" class="headerlink" title="python3.x"></a>python3.x</h3><p>python3.x中不需要指定编码格式即可处理utf-8,但如果仍要转换格式，也可以</p>
+<h3 id="python3-x"><a href="#python3-x" class="headerlink" title="python3.x"></a>python3.x</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>, errors=<span class="string">'ignore'</span>) <span class="keyword">as</span> fp:      <span class="comment"># 直接忽略无法编码的乱码报错，可用于打开夹带有可识别字符串的二进制文件</span></span><br></pre></td></tr></table></figure>
+
+<p>python3.x中不需要指定编码格式即可处理utf-8,但如果仍要转换格式，也可以</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#coding:utf-8                              # 代码编辑中可出现中文</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line"></span><br><span class="line">importlib.reload(sys)                      <span class="comment"># 编码转换</span></span><br></pre></td></tr></table></figure>
 <h2 id="中文路径及文件名"><a href="#中文路径及文件名" class="headerlink" title="中文路径及文件名"></a>中文路径及文件名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path = <span class="string">r'D:\测试路径\测试文件.txt'</span>           <span class="comment"># r''用于处理python中的转义符'\'，若不使用r''则需要每个转义符'\'前再次转义即'\\'</span></span><br><span class="line">path = <span class="string">'D:\\测试路径\\测试文件.txt'</span></span><br></pre></td></tr></table></figure>
 
