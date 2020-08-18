@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"quinzhi.github.io","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="0x01 前言hw第一天，坊间开始流传某服的EDR爆出漏洞。网上一搜就有老哥发了poc，直接get方法rce，复现无门槛，作为爱凑热闹的菜鸡，当然要试试。 0x02 背景什么是EDREDR即终端检测响应平台，从官网简介中的【支持全类型终端的统一管理与集中策略下发】来看，EDR是一个内部终端管理平台，而这次的漏洞正存在于平台管理页面 0x03 POC1https:&#x2F;&#x2F;XXX:xx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="某服EDR_RCE">
-<meta property="og:url" content="http://yoursite.com/2020/08/18/%E6%9F%90%E6%9C%8DEDR-RCE/index.html">
+<meta property="og:url" content="https://quinzhi.github.io/2020/08/18/%E6%9F%90%E6%9C%8DEDR-RCE/index.html">
 <meta property="og:site_name" content="Quin&#39;s site">
 <meta property="og:description" content="0x01 前言hw第一天，坊间开始流传某服的EDR爆出漏洞。网上一搜就有老哥发了poc，直接get方法rce，复现无门槛，作为爱凑热闹的菜鸡，当然要试试。 0x02 背景什么是EDREDR即终端检测响应平台，从官网简介中的【支持全类型终端的统一管理与集中策略下发】来看，EDR是一个内部终端管理平台，而这次的漏洞正存在于平台管理页面 0x03 POC1https:&#x2F;&#x2F;XXX:xx">
 <meta property="og:locale" content="en_US">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="RCE">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/08/18/%E6%9F%90%E6%9C%8DEDR-RCE/">
+<link rel="canonical" href="https://quinzhi.github.io/2020/08/18/%E6%9F%90%E6%9C%8DEDR-RCE/">
 
 
 <script id="page-configurations">
@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/%E6%9F%90%E6%9C%8DEDR-RCE/">
+    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2020/08/18/%E6%9F%90%E6%9C%8DEDR-RCE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
