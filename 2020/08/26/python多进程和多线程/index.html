@@ -28,8 +28,9 @@
 <meta property="og:description" content="0x01 前言最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程。 0x02 从程序编译到多进程前置知识多进程涉及到一些底层知识，了解这些才能理解使用多进程的目的和解决遇到的问题 Q: 代码是如何变成可执行文件的？A: 以c为例，c代码经过预处理、编译得到汇编代码，接着汇编代码经过汇编得到机器指令，最后机器指令加上c程序">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-26T13:37:54.000Z">
-<meta property="article:modified_time" content="2020-08-29T15:20:34.894Z">
+<meta property="article:modified_time" content="2020-08-29T15:22:34.562Z">
 <meta property="article:author" content="Quin">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://quinzhi.github.io/2020/08/26/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
@@ -214,7 +215,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-29 23:20:34" itemprop="dateModified" datetime="2020-08-29T23:20:34+08:00">2020-08-29</time>
+                <time title="Modified: 2020-08-29 23:22:34" itemprop="dateModified" datetime="2020-08-29T23:22:34+08:00">2020-08-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,7 +275,7 @@
 <td align="center">磁盘，存放数据</td>
 </tr>
 </tbody></table>
-<p>其中表格越上层读写速度越快，容量也越少。磁盘很大也很慢，完全无法满足程序运行的需求。为了执行程序，需要将磁盘中的程序映射到更快的内存，即主存中去。<br>操作系统在主存中划分一段地址空间，将这段内存分配给程序使用，这段地址空间将存放程序的代码，数据，还有其运行过程中需要用到的堆、栈空间。操作系统<br>根据从磁盘中读取的程序的文件头等“说明段”将程序的各个部分映射到主存中。<br>程序的执行本质就是机器指令的执行，而CPU就是负责解析和执行机器指令的部件。CPU从主存中程序的地址空间中的代码段取出机器指令，解析其操作码和操作数，<br>从数据段中取出数据，开始一条条地执行指令。程序便这么运行起来了。</p>
+<p>其中表格越上层读写速度越快，容量也越少。磁盘很大也很慢，完全无法满足程序运行的需求。为了执行程序，需要将磁盘中的程序映射到更快的内存，即主存中去。<br>操作系统在主存中划分一段地址空间，将这段内存分配给程序使用，这段地址空间将存放程序的代码，数据，还有其运行过程中需要用到的堆、栈空间。操作系统根据从磁盘中读取的程序的文件头等“说明段”将程序的各个部分映射到主存中。<br>程序的执行本质就是机器指令的执行，而CPU就是负责解析和执行机器指令的部件。CPU从主存中程序的地址空间中的代码段取出机器指令，解析其操作码和操作数，<br>从数据段中取出数据，开始一条条地执行指令。程序便这么运行起来了。</p>
 <hr>
 <p>Q: 为什么要使用多进程？<br>A: 从上面的内容可以知道，CPU，或者说单核CPU，需要一条条的执行指令，也就是说同一时间只有一个程序的指令正在被CPU执行，当然这些程序可以被中断，<br>CPU跑去执行别的程序，然后再恢复现场继续执行这个程序，因此单核CPU的计算机实际上是串行的，而人们看到的似乎多个程序一起运行是因为CPU的切换和运行实在<br>太快。那么，有什么办法可以让计算机同一时间真正的同时执行多个程序呢，答案就是多核CPU。在多核情况下，如果不考虑进程间或线程间的创建调度开销，<br>多线程和多进程无疑会比完全串行的程序更有效率，毕竟同一时刻有多个核在执行指令。当然，实际使用中要考虑综合情况使用。</p>
 <hr>
@@ -325,6 +326,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
 
         
 
@@ -421,11 +425,11 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
