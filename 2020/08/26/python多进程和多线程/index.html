@@ -28,7 +28,7 @@
 <meta property="og:description" content="0x01 前言最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程。 0x02 从程序编译到多进程前置知识多进程涉及到一些底层知识，了解这些才能理解使用多进程的目的和解决遇到的问题 Q: 代码是如何变成可执行文件的？A: 以c为例，c代码经过预处理、编译得到汇编代码，接着汇编代码经过汇编得到机器指令，最后机器指令加上c程序">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-26T13:37:54.000Z">
-<meta property="article:modified_time" content="2020-08-29T15:19:37.799Z">
+<meta property="article:modified_time" content="2020-08-29T15:20:34.894Z">
 <meta property="article:author" content="Quin">
 <meta name="twitter:card" content="summary">
 
@@ -214,7 +214,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-29 23:19:37" itemprop="dateModified" datetime="2020-08-29T23:19:37+08:00">2020-08-29</time>
+                <time title="Modified: 2020-08-29 23:20:34" itemprop="dateModified" datetime="2020-08-29T23:20:34+08:00">2020-08-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,7 +278,7 @@
 <hr>
 <p>Q: 为什么要使用多进程？<br>A: 从上面的内容可以知道，CPU，或者说单核CPU，需要一条条的执行指令，也就是说同一时间只有一个程序的指令正在被CPU执行，当然这些程序可以被中断，<br>CPU跑去执行别的程序，然后再恢复现场继续执行这个程序，因此单核CPU的计算机实际上是串行的，而人们看到的似乎多个程序一起运行是因为CPU的切换和运行实在<br>太快。那么，有什么办法可以让计算机同一时间真正的同时执行多个程序呢，答案就是多核CPU。在多核情况下，如果不考虑进程间或线程间的创建调度开销，<br>多线程和多进程无疑会比完全串行的程序更有效率，毕竟同一时刻有多个核在执行指令。当然，实际使用中要考虑综合情况使用。</p>
 <hr>
-<p>Q: 多进程和多线程的作用和区别？<br>A: 进程由一个或多个线程组成，线程是CPU调度的基本单位，同一进程的线程共享一块内存空间。不同进程有独立的的内存空间。<br>正是由于所在地址空间的不同，或者说其占用的资源不同，造成了进程和线程的区别。同一进程的线程共享其内存空间里的资源，所以其线程调度、线程间通信<br>、变量的共享更方便快捷。不同进程的地址空间不同，因此其进程间通信、变量共享、调度就更复杂。</p>
+<p>Q: 多进程和多线程的作用和区别？<br>A: 进程由一个或多个线程组成，线程是CPU调度的基本单位，同一进程的线程共享一块内存空间。不同进程有独立的的内存空间。正是由于所在地址空间的不同，或者说其占用的资源不同，造成了进程和线程的区别。同一进程的线程共享其内存空间里的资源，所以其线程调度、线程间通信、变量的共享更方便快捷。不同进程的地址空间不同，因此其进程间通信、变量共享、调度就更复杂。</p>
 <table>
 <thead>
 <tr>
@@ -311,7 +311,7 @@
 <li>同步：任务需要等待（同步）前一个任务的结果才能执行</li>
 <li>异步：任务独立执行，互相不影响</li>
 </ul>
-<h1 id="0x03-Python中的多进程"><a href="#0x03-Python中的多进程" class="headerlink" title="0x03 Python中的多进程"></a>0x03 Python中的多进程</h1><p>python设计了GIL锁，通过线程互斥来保证线程间的数据安全。由于python中线程是互斥的，在多核CPU下多线程的python程序事实上也只是<br>并发而不是并行的，因此一般来说多进程更能发挥多核的优势，当然这里是忽略了内存使用和进程创建等开销。</p>
+<h1 id="0x03-Python中的多进程"><a href="#0x03-Python中的多进程" class="headerlink" title="0x03 Python中的多进程"></a>0x03 Python中的多进程</h1><p>python设计了GIL锁，通过线程互斥来保证线程间的数据安全。由于python中线程是互斥的，在多核CPU下多线程的python程序事实上也只是并发而不是并行的，因此一般来说多进程更能发挥多核的优势，当然这里是忽略了内存使用和进程创建等开销。</p>
 <h2 id="为什么要加锁"><a href="#为什么要加锁" class="headerlink" title="为什么要加锁"></a>为什么要加锁</h2><p>多进程多线程通常会涉及到对共同资源的访问和使用，例如多个进程同时读取或者写入一个文件，同时访问一个列表等等，这些对公共资源访问的代码称为临界区。由于临界区代码的特殊性，我们常常需要限制对临界区的访问，也就是加锁。对于操作系统来说，加锁实现的方式有很多，可以简单理解为关中断，即操作系统阻止该任务被中断，这样CPU就不会被别的任务抢去。例如，对于一个多进程的IP扫描器来说，为了充分利用网络资源，我们可以同时对多个IP进行尝试连接，在这种情况下就可以使用多进程或者多线程。但是这就带来一个问题，多个进程访问的是同一个IP列表，我们希望每个IP只被访问一次，那么如何保证并行的进程不会取到同一个IP呢？答案就是在每个进程从共享的IP列表中取出IP前，设置加锁，然后删除被取出的IP，最后解锁。</p>
 <h2 id="多进程的坑"><a href="#多进程的坑" class="headerlink" title="多进程的坑"></a>多进程的坑</h2><p>临界区加锁稍不注意就容易出错，一般原则是对共享变量的一切修改或者判断前就要加锁</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">bug代码</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">req</span><span class="params">(lst, lock)</span>:</span></span><br><span class="line">  <span class="keyword">while</span>(len(str(lst))!=<span class="number">0</span>):</span><br><span class="line">    lock.acquire()            </span><br><span class="line">    url = lst[<span class="number">0</span>]</span><br><span class="line">    lst.remove(lst[<span class="number">0</span>])</span><br><span class="line">    lock.release()            </span><br><span class="line">    requests.get(url)</span><br></pre></td></tr></table></figure>
