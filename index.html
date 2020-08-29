@@ -182,6 +182,188 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2020/08/29/btgetshell%E4%BB%8E%E5%85%A5%E9%97%A8%E5%A4%B1%E8%B4%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/29/btgetshell%E4%BB%8E%E5%85%A5%E9%97%A8%E5%A4%B1%E8%B4%A5/" class="post-title-link" itemprop="url">btgetshell从入门失败</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-08-29 23:00:01" itemprop="dateCreated datePublished" datetime="2020-08-29T23:00:01+08:00">2020-08-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2020/08/26/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/26/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">Python多进程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-08-26 21:37:54" itemprop="dateCreated datePublished" datetime="2020-08-26T21:37:54+08:00">2020-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-29 23:00:57" itemprop="dateModified" datetime="2020-08-29T23:00:57+08:00">2020-08-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h1><p>最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程。</p>
+<h1 id="0x02-从程序编译到多进程"><a href="#0x02-从程序编译到多进程" class="headerlink" title="0x02 从程序编译到多进程"></a>0x02 从程序编译到多进程</h1><h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p><strong>多进程涉及到一些底层知识，了解这些才能理解使用多进程的目的和解决遇到的问题</strong></p>
+<p>Q: 代码是如何变成可执行文件的？<br>A: 以c为例，c代码经过<em>预处理</em>、<em>编译</em>得到汇编代码，接着汇编代码经过<em>汇编</em>得到<br>机器指令，最后机器指令加上c程序依赖的二进制库文件被一起<em>链接</em>得到二进制的可执行文件。</p>
+<ul>
+<li>预处理：去除注释之类的前处理</li>
+<li>编译：将源代码翻译成汇编代码</li>
+<li>汇编：将汇编代码翻译成二进制的机器指令</li>
+<li>链接：将二进制的程序的机器指令和二进制的库文件打包在一起(只针对静态库，动态库是程序在运行时才链接的)</li>
+</ul>
+<p>Q: 可执行文件是在磁盘中是什么样的？<br>A: 首先，可执行文件以二进制的方式存放于磁盘中，但不是杂乱无章的，不深入的来说，磁盘中的程序可大致被分为代码段和数据段。<br>数据段又可被具体分为只读区，读写区等等。看到这里肯定会想到，操作系统如何区分这些不同的段呢？答案就是规定一个文件头等一些“说明段”，这些“说明段”告诉系统该程序的运行平台，版本、数据段代码段等的起始地址，大小等等。操作系统要读取文件头的内容，才能正确的将磁盘中的程序加载到内存中。</p>
+<p>Q: 可执行程序如何被操作系统执行？<br>A: 首先，操作系统需要将可执行程序载入到内存(主存)中，才能对其进行操作。why？因为磁盘内存太慢了。计算机的内存是分类型的，人当然希望内存越快越大越好，但正所谓物以稀为贵，内存读写速度越快，其成本就越高。因此需要综合考虑成本以及实际的系统运行需求。计算机的内存分为寄存器、cache、主存、磁盘内存。<br>以一张《现代操作系统》中的图来说:<br>          —–<br>          |reg|            存在于CPU内的寄存器，作用是读取和执行机器指令<br>         ——-<br>         |cache|           存在于CPU或主板中，作用是缓存一些需要经常被CPU使用的内容，减少从主存读取的次数，提高速度<br>      —————<br>      |  main mem   |      主存，存放从磁盘中映射到主存的程序和被程序载入的内容</p>
+<hr>
+<h2 id="disk-磁盘，存放数据"><a href="#disk-磁盘，存放数据" class="headerlink" title="   |        disk        |   磁盘，存放数据"></a>   |        disk        |   磁盘，存放数据</h2><p>其中越上层读写速度越快，容量也越少。磁盘很大也很慢，完全无法满足程序运行的需求。为了执行程序，需要将磁盘中的程序映射到更快的内存，即主存中去。<br>操作系统在主存中划分一段地址空间，将这段内存分配给程序使用，这段地址空间将存放程序的代码，数据，还有其运行过程中需要用到的堆、栈空间。操作系统<br>根据从磁盘中读取的程序的文件头等“说明段”将程序的各个部分映射到主存中。<br>程序的执行本质就是机器指令的执行，而CPU就是负责解析和执行机器指令的部件。CPU从主存中程序的地址空间中的代码段取出机器指令，解析其操作码和操作数，<br>从数据段中取出数据，开始一条条地执行指令。程序便这么运行起来了。</p>
+<p>Q: 为什么要使用多进程？<br>A: 从上面的内容可以知道，CPU，或者说单核CPU，需要一条条的执行指令，也就是说同一时间只有一个程序的指令正在被CPU执行，当然这些程序可以被中断，<br>CPU跑去执行别的程序，然后再恢复现场继续执行这个程序，因此单核CPU的计算机实际上是串行的，而人们看到的似乎多个程序一起运行是因为CPU的切换和运行实在<br>太快。那么，有什么办法可以让计算机同一时间真正的同时执行多个程序呢，答案就是多核CPU。在多核情况下，如果不考虑进程间或线程间的创建调度开销，<br>多线程和多进程无疑会比完全串行的程序更有效率，毕竟同一时刻有多个核在执行指令。当然，实际使用中要考虑综合情况使用。</p>
+<p>Q: 多进程和多线程的作用和区别？<br>A: 进程由一个或多个线程组成，线程是CPU调度的基本单位，同一进程的线程共享一块内存空间。不同进程有独立的的内存空间。<br>正是由于所在地址空间的不同，或者说其占用的资源不同，造成了进程和线程的区别。同一进程的线程共享其内存空间里的资源，所以其线程调度、线程间通信<br>、变量的共享更方便快捷。不同进程的地址空间不同，因此其进程间通信、变量共享、调度就更复杂。</p>
+<table>
+<thead>
+<tr>
+<th align="center">对比</th>
+<th align="center">多线程</th>
+<th align="center">多进程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">运行速度</td>
+<td align="center">快</td>
+<td align="center">快</td>
+</tr>
+<tr>
+<td align="center">通信和共享数据</td>
+<td align="center">方便</td>
+<td align="center">复杂</td>
+</tr>
+<tr>
+<td align="center">创建和维护的时空开销</td>
+<td align="center">小</td>
+<td align="center">大</td>
+</tr>
+</tbody></table>
+<p>Q:什么是并发？什么是并行？同步和异步？<br>A:</p>
+<ul>
+<li>并发：同一时间段内多个进程或线程一起执行</li>
+<li>并行：同一时刻有多个线程或进程一起执行</li>
+<li>同步：任务需要等待（同步）前一个任务的结果才能执行</li>
+<li>异步：任务独立执行，互相不影响</li>
+</ul>
+<h1 id="0x3-Python中的多进程"><a href="#0x3-Python中的多进程" class="headerlink" title="0x3 Python中的多进程"></a>0x3 Python中的多进程</h1><p>python设计了GIL锁，通过线程互斥来保证线程间的数据安全。由于python中线程是互斥的，在多核CPU下多线程的python程序事实上也只是<br>并发而不是并行的，因此一般来说多进程更能发挥多核的优势，当然这里是忽略了内存使用和进程创建等开销。</p>
+<h2 id="为什么要加锁"><a href="#为什么要加锁" class="headerlink" title="为什么要加锁"></a>为什么要加锁</h2><p>多进程多线程通常会涉及到对共同资源的访问和使用，例如多个进程同时读取或者写入一个文件，同时访问一个列表等等，这些对公共资源访问的代码称为临界区。由于临界区代码的特殊性，我们常常需要限制对临界区的访问，也就是加锁。对于操作系统来说，加锁实现的方式有很多，可以简单理解为关中断，即操作系统阻止该任务被中断，这样CPU就不会被别的任务抢去。例如，对于一个多进程的IP扫描器来说，为了充分利用网络资源，我们可以同时对多个IP进行尝试连接，在这种情况下就可以使用多进程或者多线程。但是这就带来一个问题，多个进程访问的是同一个IP列表，我们希望每个IP只被访问一次，那么如何保证并行的进程不会取到同一个IP呢？答案就是在每个进程从共享的IP列表中取出IP前，设置加锁，然后删除被取出的IP，最后解锁。</p>
+<h2 id="多进程的坑"><a href="#多进程的坑" class="headerlink" title="多进程的坑"></a>多进程的坑</h2><p>临界区加锁稍不注意就容易出错，一般原则是对共享变量的一切修改或者判断前就要加锁</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">bug代码</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">req</span><span class="params">(lst, lock)</span>:</span></span><br><span class="line">  <span class="keyword">while</span>(len(str(lst))!=<span class="number">0</span>):</span><br><span class="line">    lock.acquire()            </span><br><span class="line">    url = lst[<span class="number">0</span>]</span><br><span class="line">    lst.remove(lst[<span class="number">0</span>])</span><br><span class="line">    lock.release()            </span><br><span class="line">    requests.get(url)</span><br></pre></td></tr></table></figure>
+<p>我们的目的是多个进程竞争一个lst，要保证每个进程一直循环直到lst为空，因此while只能放在外层。<br>按照想法，只要在修改前加锁，修改后解锁即可。但这里可能会出现一种情况，即线程a完成了lst不为空的判断，正在临界区前等待。此时线程b正在临界区内，<br>线程b取出并删除了lst中的最后一个元素，解锁。然后线程a进入临界区尝试索引lst[0]，进程a就会出错，整个程序无法退出。解决方案也很简单，<br>只要在加锁后，通过if进行一次lst是否为空的判断即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">一个进程池加锁的模板</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool, Manager</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(lst, lock)</span>:</span></span><br><span class="line">  lock.acquire()         <span class="comment"># 加锁</span></span><br><span class="line">  xxx                    <span class="comment"># 临界区</span></span><br><span class="line">  lock.release()         <span class="comment"># 解锁</span></span><br><span class="line">  xxx</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">  lst = Manager().list()     <span class="comment"># 可供多进程使用的列表 </span></span><br><span class="line">  lock = Manager.Lock()      <span class="comment"># 进程锁</span></span><br><span class="line">  p = Pool(<span class="number">4</span>)                <span class="comment"># 进程池</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)</span><br><span class="line">    p.apply_async(func, (lst, lock))</span><br><span class="line">  p.close()</span><br><span class="line">  p.join()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2020/08/18/%E6%9F%90%E6%9C%8DEDR-RCE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -213,7 +395,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-19 00:40:45" itemprop="dateModified" datetime="2020-08-19T00:40:45+08:00">2020-08-19</time>
+                <time title="Modified: 2020-08-28 21:20:12" itemprop="dateModified" datetime="2020-08-28T21:20:12+08:00">2020-08-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,7 +436,7 @@
 <p>php中extract会将传入的数组中的key作为变量名，value作为变量值导入到当前的符号表中。当某个变量已经存在时，可以通过设置第二个参数flag可以妥当处理。<br>但这里开发者没有考虑。使得自己定义的函数变量strip_slashes被get方法修改为system，然后修改传入的变量host值为系统命令即可任意RCE<br>extract的危害还是具体看实现，比如这里第一个关键点是<strong>传入extract的数组是受用户控制、没有过滤的、允许覆盖同名变量的</strong>，<br>然后这个<strong>变量刚好被作为函数使用</strong>，最后又<strong>直接将执行结果echo出来</strong>，这样才是完整的利用链</p>
 <h1 id="0x06-修复"><a href="#0x06-修复" class="headerlink" title="0x06 修复"></a>0x06 修复</h1><p>设置extract的flag参数防止变量值被修改</p>
 <h1 id="0x07-后续"><a href="#0x07-后续" class="headerlink" title="0x07 后续"></a>0x07 后续</h1><p>难得接触某服的设备，既然来了就要多逛逛，也许还能扩大一下战果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;XXX:xx&#x2F;xxxx&#x2F;xxx&#x2F;c.php?strip_slashes&#x3D;system&amp;host&#x3D;grep extract *.php</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)看看是否还有别的文件存在变量覆盖漏洞</span><br><span class="line">(2)看看服务器日志，看一下别的入侵者都做了些什么</span><br><span class="line">https:&#x2F;&#x2F;XXX:xx&#x2F;xxxx&#x2F;xxx&#x2F;c.php?strip_slashes&#x3D;system&amp;host&#x3D;grep extract *.php</span><br></pre></td></tr></table></figure>
 
 
 <h1 id="0x08-总结"><a href="#0x08-总结" class="headerlink" title="0x08 总结"></a>0x08 总结</h1><p>除了extract，php变量覆盖还有别的方法，由于是变量覆盖，因此是否能利用和造成的危害还是要具体情况具体分析。<br>一切用户输入都是不可预测的，凡是输入都要过滤处理，应该对参数中的system、phpinfo等敏感函数进行过滤</p>
@@ -890,177 +1072,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2018/12/05/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84WAN%E5%92%8CLAN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Quin">
-      <meta itemprop="description" content=""Just for fun"">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Quin's site">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/05/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84WAN%E5%92%8CLAN/" class="post-title-link" itemprop="url">路由器的WAN和LAN</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-05 19:33:15" itemprop="dateCreated datePublished" datetime="2018-12-05T19:33:15+08:00">2018-12-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-12-06 14:09:18" itemprop="dateModified" datetime="2018-12-06T14:09:18+08:00">2018-12-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>某天发现一台服务器（172.16.x.x）无法登陆，通过ping检查网络联通时发现<br>没有得到服务器回复，回复的地址是另一个ip（172.16.x.x）。便用：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tracert ip  (windows)</span><br><span class="line">traceroute ip  (linux)</span><br></pre></td></tr></table></figure>
-<p>检查一下数据包怎么走，结果发现这个地址就在我的下一跳，这不就是路由器？（当前我连接的是wifi）（192.168.x.x）<br>但一看这地址，是内网地址，但不是我当前路由器所在的内网。于是抽风了想通过arp看一下这货的的mac地址<br>（首先需要ping来获取mac地址）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure>
-<p>发现地址表里没有这个地址，这才想起<strong><em>arp协议是二层协议，针对局域网，在局域网内，数据转发是通过MAC表进行的</em></strong>。<br>因而arp -a只能显示当前局域网的arp表。而我要找的服务器地址相对我来说是个外网地址。<br>所以这玩意到底是什么，上nmap</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -Pn -A ip</span><br></pre></td></tr></table></figure>
-<p>nmap给出的猜测结果是WAP，说明大概率是个无线接入点</p>
-<p>没辙了，百度一下。</p>
-<p><strong>原来路由器确实有两个地址，内网（相对自身）和外网地址，分别对应路由器的LAN口和WAN口，即路由器内接入的设备通过<br>LAN来组成一个局域网，路由器的内网地址（如这里的192.168.x.x）为内网提供服务，而WAN口接入运营商提供的猫来连接互联<br>网，或者通过别的设备接入一个新的局域网，此时WAN口就是为出内网而服务的，WAN口的地址即为另一个局域网内的地址<br>（如这里的172.16.x.x）。</strong> 即我对172网络的服务器的ping操作得到的是路由器出口地址的回复。</p>
-<p>然后我检查了一下服务器的网线..发现原来是网线松了。此时为了验证刚才百度的结果，我再次对服务器:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tracert ip</span><br></pre></td></tr></table></figure>
-<p>服务器在172网络，按说tracert后出口地址应该是WAN口才对，但很奇怪，我的下一跳仍然是路由器内网地址192<br>接着我试着tracert 谷歌的DNS服务器8.8.8.8，发现下一跳也还是路由器内网地址。</p>
-<p>那么如何验证这个猜想呢，只好远程一下服务器，因服务器与路由器的WAN口在同一个网段内，通过服务器pingWAN操作，然后查一下服务器的apr缓存表就知道了。<br>结果WAN口MAC地址和LAN口的MAC地址一个是5a一个是5b，即它们是同一个路由器的两个不同网卡</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Quin">
-      <meta itemprop="description" content=""Just for fun"">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Quin's site">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/" class="post-title-link" itemprop="url">记一次服务器ssh登陆修复</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-03 20:02:50" itemprop="dateCreated datePublished" datetime="2018-12-03T20:02:50+08:00">2018-12-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-18 16:20:47" itemprop="dateModified" datetime="2019-12-18T16:20:47+08:00">2019-12-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>1.服务器远程登陆报错: connection refused</p>
-<h1 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h1><p>1.首先考虑网络问题，发现可以ping通,排除网络问题<br>2.因为有人在无法登陆之前已经登陆了，尝试重启服务器,重启之后问题还在。<br>3.重启无效又没法登陆，只能跑去机房上屏幕调试了。</p>
-<p>生平第一次进机房处理毛病，插上就是图形登陆界面，输入密码发现登陆之后会黑屏，然后回到登陆界面。<br>我日，难道是系统炸了。既然图形界面上不了，那就上终端。<code>ctrl alt f1</code> 进tty。<br>tty能进，那就简单了，尝试检查一下ssh服务是不是开着：</p>
-<p><code>netstat -l | grep ssh</code></p>
-<p>发现没有ssh服务，那就重启服务：</p>
-<p><code>sudo sevice sshd restart</code></p>
-<p>报错：<code>Job for ssh.service failed because the control process exited with error code</code><br>从这个报错来看ssh的进程应该还在才对，但是top和端口都找不到相关服务。没辙了，直接百度这个错误吧。</p>
-<p>然后找到了这个老哥的blog：</p>
-<p><a href="https://blog.csdn.net/woailyoo0000/article/details/79782986" target="_blank" rel="noopener">csdn</a></p>
-<p>发现一条命令：</p>
-<p><code>/usr/sbin/sshd -T</code></p>
-<p>没查过这个命令，但是估计-T应该是test吧。测试配置文件<br>运行一下，报错了，配置文件错误，问题找到了，和上面这个老哥一样</p>
-<p>但是我不懂ssh的配置语法，该怎么改呢<br>再次百度这个错误</p>
-<p><a href="http://www.cnblogs.com/miaodi/p/6718950.html" target="_blank" rel="noopener">cnblog</a></p>
-<p>估计是ssh更新或者某个人把配置文件给改错了，</p>
-<p>错误配置：<br><code>PermitRootLogin prohibit-password yes</code></p>
-<p>正确配置：<br><code>PermitRootLogin yes</code></p>
-<p>然后重启ssh服务</p>
-<p><code>sudo service ssh restart</code></p>
-<p>大功告成，可以登陆了。</p>
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>1.善用搜索引擎，直接搜索<strong>错误信息</strong><br>2.这之后发现在图形界面仍然无法登陆，估计是根本没有安装图形桌面（但登陆界面是图形化的）<br>或者管理员做了某些限制吧，这个奇怪的现象把我解决问题的想法打乱了一点，因为ssh无法登陆<br>应该不会影响直接登陆才对。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1133,14 +1144,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

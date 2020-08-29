@@ -182,6 +182,177 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2018/12/05/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84WAN%E5%92%8CLAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/05/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84WAN%E5%92%8CLAN/" class="post-title-link" itemprop="url">路由器的WAN和LAN</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-05 19:33:15" itemprop="dateCreated datePublished" datetime="2018-12-05T19:33:15+08:00">2018-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-12-06 14:09:18" itemprop="dateModified" datetime="2018-12-06T14:09:18+08:00">2018-12-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>某天发现一台服务器（172.16.x.x）无法登陆，通过ping检查网络联通时发现<br>没有得到服务器回复，回复的地址是另一个ip（172.16.x.x）。便用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tracert ip  (windows)</span><br><span class="line">traceroute ip  (linux)</span><br></pre></td></tr></table></figure>
+<p>检查一下数据包怎么走，结果发现这个地址就在我的下一跳，这不就是路由器？（当前我连接的是wifi）（192.168.x.x）<br>但一看这地址，是内网地址，但不是我当前路由器所在的内网。于是抽风了想通过arp看一下这货的的mac地址<br>（首先需要ping来获取mac地址）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure>
+<p>发现地址表里没有这个地址，这才想起<strong><em>arp协议是二层协议，针对局域网，在局域网内，数据转发是通过MAC表进行的</em></strong>。<br>因而arp -a只能显示当前局域网的arp表。而我要找的服务器地址相对我来说是个外网地址。<br>所以这玩意到底是什么，上nmap</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -Pn -A ip</span><br></pre></td></tr></table></figure>
+<p>nmap给出的猜测结果是WAP，说明大概率是个无线接入点</p>
+<p>没辙了，百度一下。</p>
+<p><strong>原来路由器确实有两个地址，内网（相对自身）和外网地址，分别对应路由器的LAN口和WAN口，即路由器内接入的设备通过<br>LAN来组成一个局域网，路由器的内网地址（如这里的192.168.x.x）为内网提供服务，而WAN口接入运营商提供的猫来连接互联<br>网，或者通过别的设备接入一个新的局域网，此时WAN口就是为出内网而服务的，WAN口的地址即为另一个局域网内的地址<br>（如这里的172.16.x.x）。</strong> 即我对172网络的服务器的ping操作得到的是路由器出口地址的回复。</p>
+<p>然后我检查了一下服务器的网线..发现原来是网线松了。此时为了验证刚才百度的结果，我再次对服务器:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tracert ip</span><br></pre></td></tr></table></figure>
+<p>服务器在172网络，按说tracert后出口地址应该是WAN口才对，但很奇怪，我的下一跳仍然是路由器内网地址192<br>接着我试着tracert 谷歌的DNS服务器8.8.8.8，发现下一跳也还是路由器内网地址。</p>
+<p>那么如何验证这个猜想呢，只好远程一下服务器，因服务器与路由器的WAN口在同一个网段内，通过服务器pingWAN操作，然后查一下服务器的apr缓存表就知道了。<br>结果WAN口MAC地址和LAN口的MAC地址一个是5a一个是5b，即它们是同一个路由器的两个不同网卡</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Quin">
+      <meta itemprop="description" content=""Just for fun"">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Quin's site">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E7%99%BB%E9%99%86%E4%BF%AE%E5%A4%8D/" class="post-title-link" itemprop="url">记一次服务器ssh登陆修复</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-03 20:02:50" itemprop="dateCreated datePublished" datetime="2018-12-03T20:02:50+08:00">2018-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-18 16:20:47" itemprop="dateModified" datetime="2019-12-18T16:20:47+08:00">2019-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>1.服务器远程登陆报错: connection refused</p>
+<h1 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h1><p>1.首先考虑网络问题，发现可以ping通,排除网络问题<br>2.因为有人在无法登陆之前已经登陆了，尝试重启服务器,重启之后问题还在。<br>3.重启无效又没法登陆，只能跑去机房上屏幕调试了。</p>
+<p>生平第一次进机房处理毛病，插上就是图形登陆界面，输入密码发现登陆之后会黑屏，然后回到登陆界面。<br>我日，难道是系统炸了。既然图形界面上不了，那就上终端。<code>ctrl alt f1</code> 进tty。<br>tty能进，那就简单了，尝试检查一下ssh服务是不是开着：</p>
+<p><code>netstat -l | grep ssh</code></p>
+<p>发现没有ssh服务，那就重启服务：</p>
+<p><code>sudo sevice sshd restart</code></p>
+<p>报错：<code>Job for ssh.service failed because the control process exited with error code</code><br>从这个报错来看ssh的进程应该还在才对，但是top和端口都找不到相关服务。没辙了，直接百度这个错误吧。</p>
+<p>然后找到了这个老哥的blog：</p>
+<p><a href="https://blog.csdn.net/woailyoo0000/article/details/79782986" target="_blank" rel="noopener">csdn</a></p>
+<p>发现一条命令：</p>
+<p><code>/usr/sbin/sshd -T</code></p>
+<p>没查过这个命令，但是估计-T应该是test吧。测试配置文件<br>运行一下，报错了，配置文件错误，问题找到了，和上面这个老哥一样</p>
+<p>但是我不懂ssh的配置语法，该怎么改呢<br>再次百度这个错误</p>
+<p><a href="http://www.cnblogs.com/miaodi/p/6718950.html" target="_blank" rel="noopener">cnblog</a></p>
+<p>估计是ssh更新或者某个人把配置文件给改错了，</p>
+<p>错误配置：<br><code>PermitRootLogin prohibit-password yes</code></p>
+<p>正确配置：<br><code>PermitRootLogin yes</code></p>
+<p>然后重启ssh服务</p>
+<p><code>sudo service ssh restart</code></p>
+<p>大功告成，可以登陆了。</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>1.善用搜索引擎，直接搜索<strong>错误信息</strong><br>2.这之后发现在图形界面仍然无法登陆，估计是根本没有安装图形桌面（但登陆界面是图形化的）<br>或者管理员做了某些限制吧，这个奇怪的现象把我解决问题的想法打乱了一点，因为ssh无法登陆<br>应该不会影响直接登陆才对。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2018/11/15/python%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -858,187 +1029,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2018/10/09/Python%E8%BF%94%E5%9B%9E%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Quin">
-      <meta itemprop="description" content=""Just for fun"">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Quin's site">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/09/Python%E8%BF%94%E5%9B%9E%E5%80%BC/" class="post-title-link" itemprop="url">Python返回值</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2018-10-09 18:08:43 / Modified: 18:18:50" itemprop="dateCreated datePublished" datetime="2018-10-09T18:08:43+08:00">2018-10-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python-basic/" itemprop="url" rel="index"><span itemprop="name">Python basic</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Python中的返回值"><a href="#Python中的返回值" class="headerlink" title="Python中的返回值"></a>Python中的返回值</h2><p>Python中只有1等价于<code>True</code>，只有0等价于<code>False</code>，若无默认规定，且没有指定返回值时程序会返回<code>None</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://quinzhi.github.io/2018/10/09/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Quin">
-      <meta itemprop="description" content=""Just for fun"">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Quin's site">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/09/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">Python内建数据结构</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-10-09 14:06:52" itemprop="dateCreated datePublished" datetime="2018-10-09T14:06:52+08:00">2018-10-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-10-27 10:17:42" itemprop="dateModified" datetime="2018-10-27T10:17:42+08:00">2018-10-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python-basic/" itemprop="url" rel="index"><span itemprop="name">Python basic</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="元组-tuple"><a href="#元组-tuple" class="headerlink" title="元组(tuple)"></a>元组(tuple)</h1><p>元组与列表类似，但元组的元素不可修改,元素可重复</p>
-<h2 id="元组创建"><a href="#元组创建" class="headerlink" title="元组创建"></a>元组创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tuple1 = ()  <span class="comment"># 空元组</span></span><br><span class="line">tuple2 = (<span class="number">1</span>,)  <span class="comment"># 只有一个元素时要加上都逗号,否则会被认为是后面的值的类型</span></span><br><span class="line">tuple3 = (<span class="number">1</span>, <span class="string">'2'</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="访问元组元素"><a href="#访问元组元素" class="headerlink" title="访问元组元素"></a>访问元组元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tuple3[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">tuple3[<span class="number">0</span>:<span class="number">-1</span>] = <span class="number">1</span>, <span class="string">'2'</span>, <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="列表-list"><a href="#列表-list" class="headerlink" title="列表(list)"></a>列表(list)</h1><p>可修改元素值，元素可重复</p>
-<h2 id="列表创建"><a href="#列表创建" class="headerlink" title="列表创建"></a>列表创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list1 = []  <span class="comment"># 空列表</span></span><br><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="访问列表元素"><a href="#访问列表元素" class="headerlink" title="访问列表元素"></a>访问列表元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list1[<span class="number">0</span>]</span><br><span class="line">list[<span class="number">0</span>:<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="更新列表"><a href="#更新列表" class="headerlink" title="更新列表"></a>更新列表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">0</span>]</span><br><span class="line">list.append(<span class="number">1</span>)  <span class="comment"># 将元素1添加到列表后</span></span><br><span class="line"><span class="keyword">print</span> list</span><br></pre></td></tr></table></figure>
-<p>运行结果</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除列表元素"><a href="#删除列表元素" class="headerlink" title="删除列表元素"></a>删除列表元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">del</span> list[<span class="number">0</span>]  <span class="comment"># 删除索引为0的元素</span></span><br><span class="line"><span class="keyword">print</span> list</span><br></pre></td></tr></table></figure>
-<p>运行结果</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="常用的列表操作"><a href="#常用的列表操作" class="headerlink" title="常用的列表操作"></a>常用的列表操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">len([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])   <span class="comment"># 长度</span></span><br><span class="line">len(list1)</span><br><span class="line">list1+list2    <span class="comment"># 组合</span></span><br><span class="line">[<span class="number">1</span>]*<span class="number">3</span>          <span class="comment"># 重复</span></span><br><span class="line"><span class="number">3</span> <span class="keyword">in</span> list1     <span class="comment"># 判断是否存在</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list1:   <span class="comment"># 迭代</span></span><br><span class="line">    xxxx</span><br><span class="line">cmp(list1, list2)  <span class="comment"># 比较</span></span><br><span class="line">max(list1)          <span class="comment"># 返回最大值</span></span><br><span class="line">min(list1)</span><br><span class="line">list(tuple1)        <span class="comment"># 将元组转换为列表</span></span><br><span class="line">list1.count(<span class="string">'1'</span>)     <span class="comment"># 统计元素出现次数</span></span><br><span class="line">list1.insert(index, obj)  <span class="comment"># 在某个位置插入元素</span></span><br><span class="line">list1.index(obj)         <span class="comment"># 得到某元素第一次出现的索引</span></span><br><span class="line">list1.pop                <span class="comment"># 移除最后一个元素，并返回该值</span></span><br><span class="line">list1.pop(index=<span class="number">1</span>)       <span class="comment"># 按索引移除某个元素</span></span><br><span class="line">list1.remove(obj)         <span class="comment"># 移除某个元素的第一隔匹配项</span></span><br></pre></td></tr></table></figure>
-<h1 id="字典-dictionary"><a href="#字典-dictionary" class="headerlink" title="字典(dictionary)"></a>字典(dictionary)</h1><p>字典即键值对的集合,其中键(key)在同一字典内是唯一的，key可以是数字、字符、元组，但不能用列表</p>
-<h2 id="字典创建"><a href="#字典创建" class="headerlink" title="字典创建"></a>字典创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;&#125;</span><br><span class="line">dic = &#123;<span class="number">1</span>:<span class="string">'a'</span>, <span class="number">2</span>:<span class="string">'b'</span>&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="访问字典值"><a href="#访问字典值" class="headerlink" title="访问字典值"></a>访问字典值</h2><p>通过key访问</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dic[<span class="number">1</span>]</span><br><span class="line">dic[<span class="string">'a'</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="删除字典元素"><a href="#删除字典元素" class="headerlink" title="删除字典元素"></a>删除字典元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> dict[<span class="string">'name'</span>]  <span class="comment"># 删除一个元素</span></span><br><span class="line">dict.clear()      <span class="comment"># 清空字典元素</span></span><br></pre></td></tr></table></figure>
-<h2 id="操作字典"><a href="#操作字典" class="headerlink" title="操作字典"></a>操作字典</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cmp(dic1, dic2)</span><br><span class="line">len(dic)</span><br><span class="line">str(dict)</span><br><span class="line">dict.has_key(key)   <span class="comment"># key在字典内则返回True，否则返回false(python2.x)</span></span><br><span class="line">dict.__contains__(key)    <span class="comment"># key在字典内则返回True，否则返回false(python3.x)</span></span><br><span class="line">dict.items()        <span class="comment"># 返回键值对</span></span><br><span class="line">dict.keys()         <span class="comment"># 返回含有所有key的list</span></span><br><span class="line">dict.values()       <span class="comment"># 返回含有所有values的list</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h1><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="论迭代过程中删除元素的正确方式"><a href="#论迭代过程中删除元素的正确方式" class="headerlink" title="论迭代过程中删除元素的正确方式"></a>论迭代过程中删除元素的正确方式</h3><p>错误示范：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        a.remove(i)</span><br><span class="line"><span class="keyword">print</span> a</span><br></pre></td></tr></table></figure>
-<p>本意是想将列表中的偶数删除，正确结果应该是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<p>但上述代码的运行结果是:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<p>因为在删除元素<code>2</code>之后，列表重新进行了排序，此时元素<code>4</code>变成了索引为1的元素,<br>而列表只根据索引进行迭代，索引为1的元素已经被处理过了，因此下一个迭代到的元素为索引为2的元素<code>4</code>(第二个4)，即第一个被’顶上去’的元素<code>4</code>被跳过了。</p>
-<h3 id="正确示范"><a href="#正确示范" class="headerlink" title="正确示范"></a>正确示范</h3><p>普通人：可以用另一个列表把奇数拿出来，避免删除操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line">b = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">        b.append(i)</span><br></pre></td></tr></table></figure>
-<p>大佬：也可以使用过滤器</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># filter(function, iterable)</span></span><br><span class="line"><span class="comment"># 过滤掉不符合条件的值，即过滤掉使得function返回False或者None的值（留下返回值为True的值）</span></span><br><span class="line"><span class="comment"># return list in python2.7, return iterable in python3.0+, can use list(iterable) to turn it into list</span></span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line">a = filter(<span class="keyword">lambda</span> i: i%<span class="number">2</span>!=<span class="number">0</span>, a)</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(i)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line">a = filter(test, a)</span><br></pre></td></tr></table></figure>
-<p>大仙：倒序处理</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(a) - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):  <span class="comment"># range(start, end, step) 注意区间是前闭后开的，因此end应取0的前一个数-1</span></span><br><span class="line">    <span class="keyword">if</span> a[i]%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        a.remove(a[i])</span><br></pre></td></tr></table></figure>
-
-<pre><code>### 总结
-for进行遍历时，遍历的长度从一开始就已经确定了，并且其遍历的索引不会根据列表变化而改变，因此可能会导致漏掉一些元素或者遍历的索引越界</code></pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1111,14 +1101,14 @@ for进行遍历时，遍历的长度从一开始就已经确定了，并且其�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
