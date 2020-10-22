@@ -33,7 +33,7 @@
 <p>宝塔某版本路径<br>Windows版<br>安装目录：C:\BtSoft\ServerAdmin<br>网站目录：C:\wwwroot<br>MySQL目录：C:\BtSoft\WebSoft\mysql<br>日志文件：C:\BtSoft\WebSoft\apache\logs</p>
 <p>Linux<br>安装目录：/www/server<br>网站目录：/www/wwwroot/default<br>MySQL目录：/www/server/mysql<br>日志目录：/www/wwwlogs</p>
 <hr>
-<h2 id="0x03-实战"><a href="#0x03-实战" class="headerlink" title="0x03 实战"></a>0x03 实战</h2><p>某天找到一个弱口令phpmyadmin，windows平台，通过查看系统变量得到数据库路径，盲猜网站路径就在同一目录，写日志拿shell一气呵成<br>中间有一点波折就是服务器似乎有防护软件，一些敏感操作会被reset，然后直接ban ip，但奇怪的是防护并不总是成功的，换几个ip再来可能就写入了<del>(不会是蜜罐吧卧槽)</del></p>
+<h2 id="0x03-实战-伪"><a href="#0x03-实战-伪" class="headerlink" title="0x03 实战(伪)"></a>0x03 实战(伪)</h2><p>某天找到一个弱口令phpmyadmin(虽然不是bt)，windows平台，通过查看系统变量得到数据库路径，盲猜网站路径就在同一目录，写日志拿shell一气呵成<br>中间有一点波折就是服务器似乎有防护软件，一些敏感操作会被reset，然后直接ban ip，但奇怪的是防护并不总是成功的，换几个ip再来可能就写入了<del>(不会是蜜罐吧卧槽)</del></p>
 <h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p>关于phpmyamdin通过写入日志getshell，方法来自<a href="https://zhuanlan.zhihu.com/p/25957366" target="_blank" rel="noopener">这里</a></p>
 ]]></content>
       <categories>
