@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"quinzhi.github.io","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0x01 前言最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程。 0x02 从程序编译到多进程前置知识多进程涉及到一些底层知识，了解这些才能理解使用多进程的目的和解决遇到的问题 Q: 代码是如何变成可执行文件的？A: 以c为例，c代码经过预处理、编译得到汇编代码，接着汇编代码经过汇编得到机器指令，最后机器指令加上c程序">
+  <meta name="description" content="0x01 前言最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程和多线程。 0x02 从程序编译到多进程前置知识多进程涉及到一些底层知识，了解这些才能理解使用多进程的目的和解决遇到的问题 Q: 代码是如何变成可执行文件的？A: 以c为例，c代码经过预处理、编译得到汇编代码，接着汇编代码经过汇编得到机器指令，最后机器指令加">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python多进程">
+<meta property="og:title" content="Python多进程和多线程">
 <meta property="og:url" content="https://quinzhi.github.io/2020/08/26/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Quin&#39;s site">
-<meta property="og:description" content="0x01 前言最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程。 0x02 从程序编译到多进程前置知识多进程涉及到一些底层知识，了解这些才能理解使用多进程的目的和解决遇到的问题 Q: 代码是如何变成可执行文件的？A: 以c为例，c代码经过预处理、编译得到汇编代码，接着汇编代码经过汇编得到机器指令，最后机器指令加上c程序">
+<meta property="og:description" content="0x01 前言最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程和多线程。 0x02 从程序编译到多进程前置知识多进程涉及到一些底层知识，了解这些才能理解使用多进程的目的和解决遇到的问题 Q: 代码是如何变成可执行文件的？A: 以c为例，c代码经过预处理、编译得到汇编代码，接着汇编代码经过汇编得到机器指令，最后机器指令加">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-26T13:37:54.000Z">
-<meta property="article:modified_time" content="2021-04-22T16:31:10.023Z">
+<meta property="article:modified_time" content="2021-04-22T16:42:05.253Z">
 <meta property="article:author" content="Quin">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Python多进程 | Quin's site</title>
+  <title>Python多进程和多线程 | Quin's site</title>
   
 
 
@@ -198,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Python多进程
+          Python多进程和多线程
         </h1>
 
         <div class="post-meta">
@@ -215,7 +215,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-23 00:31:10" itemprop="dateModified" datetime="2021-04-23T00:31:10+08:00">2021-04-23</time>
+                <time title="Modified: 2021-04-23 00:42:05" itemprop="dateModified" datetime="2021-04-23T00:42:05+08:00">2021-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,7 +238,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h1><p>最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程。</p>
+        <h1 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h1><p>最近hvv爆出了一堆漏洞，利用方式简单快捷，批量扫的不亦乐乎。但是在利用时由于涉及到大量ip的连接请求，因此想到试试py的多进程和多线程。</p>
 <h1 id="0x02-从程序编译到多进程"><a href="#0x02-从程序编译到多进程" class="headerlink" title="0x02 从程序编译到多进程"></a>0x02 从程序编译到多进程</h1><h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p><strong>多进程涉及到一些底层知识，了解这些才能理解使用多进程的目的和解决遇到的问题</strong></p>
 <p>Q: 代码是如何变成可执行文件的？<br>A: 以c为例，c代码经过<em>预处理</em>、<em>编译</em>得到汇编代码，接着汇编代码经过<em>汇编</em>得到<br>机器指令，最后机器指令加上c程序依赖的二进制库文件被一起<em>链接</em>得到二进制的可执行文件。</p>
 <ul>
@@ -323,12 +323,6 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"""multiprocessing实现多进程，无需加锁"""</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(url)</span>:</span></span><br><span class="line">  xxx                    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">  p = Pool(<span class="number">4</span>)                <span class="comment"># 设置进程池中的最大进程数</span></span><br><span class="line">  <span class="keyword">for</span> url <span class="keyword">in</span> lst:                  <span class="comment"># 给每个进程传入一个url作为参数</span></span><br><span class="line">    p.apply_async(func, [url])      <span class="comment">#apply_async是非阻塞的，需要用join来阻塞主进程. 如果函数有多个参数，用元组()传入。如果是单个参数用[]传入</span></span><br><span class="line">  p.close()</span><br><span class="line">  p.join()                        <span class="comment"># 阻塞主进程，防止主进程先于子进程结束</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="为什么要加锁"><a href="#为什么要加锁" class="headerlink" title="为什么要加锁"></a>为什么要加锁</h2><p>多进程多线程通常会涉及到对共同资源的访问和使用，例如多个进程同时读取或者写入一个文件，同时访问一个列表等等，这些对公共资源访问的代码称为临界区。由于临界区代码的特殊性，我们常常需要限制对临界区的访问，也就是加锁。否则不同的进程和线程同时读取一个数据的时候就可能会出问题。对于操作系统来说，加锁实现的方式有很多，可以简单理解为关中断，即操作系统阻止该任务被中断，这样CPU就不会被别的任务抢去。例如，对于一个多进程的IP扫描器来说，为了充分利用网络资源，我们可以同时对多个IP进行尝试连接，在这种情况下就可以使用多进程或者多线程。但是这就带来一个问题，多个进程访问的是同一个IP列表，我们希望每个IP只被访问一次，那么如何保证并行的进程不会取到同一个IP呢？答案就是在每个进程从共享的IP列表中取出IP前，设置加锁，然后删除被取出的IP，最后解锁。</p>
-<h2 id="多进程的坑"><a href="#多进程的坑" class="headerlink" title="多进程的坑"></a>多进程的坑</h2><ul>
-<li>临界区加锁稍不注意就容易出错，一般原则是对共享变量的一切修改或者判断前就要加锁</li>
-<li>由于多进程并不分享各自的内存空间，因此无法使用一般的list和dict。如果要不同进程之间的共享变量是list或者dict，比如多个进程读取同一个list，则需要通过multiprocessing自带的Manager()来创建相关数据结构来进行管理</li>
-<li>注意apply和apply_async一个是阻塞一个是不阻塞，async需要join来阻塞主进程防止其先于子进程结束</li>
-<li>多个函数和单个函数传参不同，apply_async(func, [url])  apply_async(func, (url, lock)) 这个奇葩的函数传参</li>
-</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">临界区加锁bug代码</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">req</span><span class="params">(lst, lock)</span>:</span></span><br><span class="line">  <span class="keyword">while</span>(len(str(lst))!=<span class="number">0</span>):</span><br><span class="line">    lock.acquire()            </span><br><span class="line">    url = lst[<span class="number">0</span>]</span><br><span class="line">    lst.remove(lst[<span class="number">0</span>])</span><br><span class="line">    lock.release()            </span><br><span class="line">    requests.get(url)</span><br></pre></td></tr></table></figure>
 <p>我们的目的是多个进程竞争一个lst，要保证每个进程一直循环直到lst为空，因此while只能放在外层。<br>按照想法，只要在修改前加锁，修改后解锁即可。但这里可能会出现一种情况，即线程a完成了lst不为空的判断，正在临界区前等待。此时线程b正在临界区内，<br>线程b取出并删除了lst中的最后一个元素，解锁。然后线程a进入临界区尝试索引lst[0]，进程a就会出错，整个程序无法退出。解决方案也很简单，只要在加锁后，通过if进行一次lst是否为空的判断即可</p>
 <p>当然也可以将整个list传入函数，然后在函数内部手动处理临界区加锁的操作，但是会比较复制和容易出错。</p>
@@ -338,6 +332,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"""cocurrent.futures实现线程池"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor, as_completed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(url)</span>:</span></span><br><span class="line">  xxx</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">  url_lst = []</span><br><span class="line">  <span class="keyword">with</span> ThreadPoolExecutor(max_workers=<span class="number">300</span>) <span class="keyword">as</span> tp:  <span class="comment"># 设置最大线程数量为300</span></span><br><span class="line">    t_lst = []                              <span class="comment"># 线程池列表t_lst</span></span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> url_lst:                     <span class="comment"># 给每个线程单独传参 </span></span><br><span class="line">      t = tp.summit(func, url)            </span><br><span class="line">      t_lst.append(t)</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> as_completed(t_lst): </span><br><span class="line">      result = future.result()              <span class="comment"># result()可以获取每个线程的返回值</span></span><br></pre></td></tr></table></figure>
 
 <p>这里依然采用了向每个线程的函数单独传参的方式，如果要换成多进程，只需将两处ThreadPoolExecutor换成ProcessPoolExecutor</p>
+<h1 id="0x05-Python中多进程和多线程的一些坑"><a href="#0x05-Python中多进程和多线程的一些坑" class="headerlink" title="0x05 Python中多进程和多线程的一些坑"></a>0x05 Python中多进程和多线程的一些坑</h1><ul>
+<li>临界区加锁稍不注意就容易出错，一般原则是对共享变量的一切修改或者判断前就要加锁</li>
+<li>由于多进程并不分享各自的内存空间，因此无法使用一般的list和dict。如果要不同进程之间的共享变量是list或者dict，比如多个进程读取同一个list，则需要通过multiprocessing自带的Manager()来创建相关数据结构来进行管理</li>
+<li>注意apply和apply_async一个是阻塞一个是不阻塞，async需要join来阻塞主进程防止其先于子进程结束</li>
+<li>多个函数和单个函数传参不同，apply_async(func, [url])  apply_async(func, (url, lock)) 这个奇葩的函数传参</li>
+</ul>
 
     </div>
 
@@ -422,7 +422,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-前言"><span class="nav-number">1.</span> <span class="nav-text">0x01 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-从程序编译到多进程"><span class="nav-number">2.</span> <span class="nav-text">0x02 从程序编译到多进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前置知识"><span class="nav-number">2.1.</span> <span class="nav-text">前置知识</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x03-Python中的多进程"><span class="nav-number">3.</span> <span class="nav-text">0x03 Python中的多进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要加锁"><span class="nav-number">3.1.</span> <span class="nav-text">为什么要加锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多进程的坑"><span class="nav-number">3.2.</span> <span class="nav-text">多进程的坑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x04-Python中的多线程"><span class="nav-number">4.</span> <span class="nav-text">0x04 Python中的多线程</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-前言"><span class="nav-number">1.</span> <span class="nav-text">0x01 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-从程序编译到多进程"><span class="nav-number">2.</span> <span class="nav-text">0x02 从程序编译到多进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前置知识"><span class="nav-number">2.1.</span> <span class="nav-text">前置知识</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x03-Python中的多进程"><span class="nav-number">3.</span> <span class="nav-text">0x03 Python中的多进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要加锁"><span class="nav-number">3.1.</span> <span class="nav-text">为什么要加锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x04-Python中的多线程"><span class="nav-number">4.</span> <span class="nav-text">0x04 Python中的多线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x05-Python中多进程和多线程的一些坑"><span class="nav-number">5.</span> <span class="nav-text">0x05 Python中多进程和多线程的一些坑</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
