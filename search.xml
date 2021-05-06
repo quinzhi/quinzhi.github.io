@@ -114,7 +114,7 @@
 <hr>
 <p>Q: 为什么要使用多进程？<br>A: 从上面的内容可以知道，CPU，或者说单核CPU，需要一条条的执行指令，也就是说同一时间只有一个程序的指令正在被CP执行。当然这些程序可以被中断，CPU跑去执行别的程序，然后再恢复现场继续执行这个程序。<br>因此单核CPU的计算机实际上是串行的，而计算机中似乎多个程序一起运行是因为CPU的切换和运行实在太快。那么，有什么办法可以让计算机同一时间真正的同时执行多个程序呢，答案就是多核CPU。在多核情况下，如果不考虑进程间或线程间的创建调度开销，多线程和多进程无疑会比完全串行的程序更有效率，毕竟同一时刻有多个核在执行指令。</p>
 <hr>
-<p>Q: 多进程和多线程的作用和区别？<br>A: 进程由一个或多个线程组成，线程是CPU调度的基本单位，同一进程的线程共享一块内存空间。不同进程有独立的的内存空间。正是由于所在地址空间的不同，或者说其占用的资源不同，造成了进程和线程的区别。同一进程的线程共享其内存空间里的资源，所以其线程调度、线程间通信、变量的共享更方便快捷。不同进程的地址空间不同，因此其进程间通信、变量共享、调度就更复杂。</p>
+<p>Q: 多进程和多线程的作用和区别？<br>A: 进程由一个或多个线程组成，线程是CPU调度的基本单位，同一进程的线程共享一块内存空间。不同进程有独立的的内存空间。<br>正是由于所在地址空间的不同，或者说其占用的资源不同，造成了进程和线程的区别。<br>同一进程的线程共享其内存空间里的资源，所以其线程调度、线程间通信、变量的共享更方便快捷。不同进程的地址空间不同，因此其进程间通信、变量共享、调度就更复杂。<br>由于多线程共享一个内存空间，所以当一个线程非正常退出时，整个进程都会退出。多进程内存空间独立，所以互不影响</p>
 <table>
 <thead>
 <tr>
@@ -134,7 +134,7 @@
 <td align="center">复杂</td>
 </tr>
 <tr>
-<td align="center">创建和维护的时空开销</td>
+<td align="center">创建、维护和调度的时空开销</td>
 <td align="center">小</td>
 <td align="center">大</td>
 </tr>
@@ -154,7 +154,7 @@
 </ul>
 <hr>
 <p>对于爬虫来说，大部分时间应该是花在等待远端服务器响应，并不需要CPU频繁计算，所以多核和单核操作对其影响不大，然而考虑到多进程需要相当多的系统资源（如果将进程数开的很高，会导致报错页内存不足）实际上如果你尝试分别跑50个线程和50个进程，会发现他们执行时间差不多。但是如果你尝试开300个线程和300个进程比较，会发现300个线程速度快了不少，但是300个进程可能根本跑不起来。所以多线程应该效率更高。当然多线程的效率受限于你的电脑核数，也就是说可能500线程和500以上的线程跑的时间是差不多的</p>
-<p>实际上一般的爬虫场景如读取IP列表进行批量测试，直接传入单个ip作为参数即可。这样函数逻辑就简单很多</p>
+<p>常见的爬虫场景如读取IP列表进行批量测试，直接传入单个ip作为参数。这样函数逻辑简单</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"""multiprocessing实现多进程，无需加锁"""</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(url)</span>:</span></span><br><span class="line">  xxx                    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">  p = Pool(<span class="number">4</span>)                <span class="comment"># 设置进程池中的最大进程数</span></span><br><span class="line">  <span class="keyword">for</span> url <span class="keyword">in</span> lst:                  <span class="comment"># 给每个进程传入一个url作为参数</span></span><br><span class="line">    p.apply_async(func, [url])      <span class="comment">#apply_async是非阻塞的，需要用join来阻塞主进程. 如果函数有多个参数，用元组()传入。如果是单个参数用[]传入</span></span><br><span class="line">  p.close()</span><br><span class="line">  p.join()                        <span class="comment"># 阻塞主进程，防止主进程先于子进程结束</span></span><br></pre></td></tr></table></figure>
 
 <p>当然也可以将整个list传入函数，然后在函数内部手动处理临界区加锁的操作，但是会比较复制和容易出错。</p>
